@@ -74,6 +74,7 @@
     .modal-actions { display:flex; gap:0.8rem; flex-wrap:wrap; align-items:center; }
     .modal-btn-download { display:inline-flex; align-items:center; gap:0.5rem; padding:0.75rem 1.5rem; background:var(--crimson); color:#fff; border:none; border-radius:999px; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; text-decoration:none; cursor:pointer; transition:all 0.25s; font-family:"DM Sans",sans-serif; }
     .modal-btn-download:hover { background:var(--rose); transform:translateY(-1px); box-shadow:0 6px 20px rgba(139,26,26,0.25); }
+    .modal-btn-download:disabled { opacity:0.6; cursor:not-allowed; transform:none; }
     .modal-btn-close { display:inline-flex; align-items:center; gap:0.5rem; padding:0.75rem 1.5rem; background:transparent; color:var(--crimson); border:1px solid var(--crimson); border-radius:999px; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; cursor:pointer; transition:all 0.25s; font-family:"DM Sans",sans-serif; }
     .modal-btn-close:hover { background:var(--blush); }
     .no-file-note { font-size:0.75rem; color:var(--accent); font-style:italic; }
@@ -159,7 +160,6 @@
 <div class="page-wrap">
   <a href="index.html" class="back-link">&#8592; Back to Portfolio</a>
   <div class="page-header">
-    <div class="page-section-label">Midterms</div>
     <h1 class="page-main-title">Practice <em>Tasks</em></h1>
     <p class="page-subtitle">Tasks and activities completed for the midterm, exploring data analysis and visualization using Excel and Power Query.</p>
     <div class="filters">
@@ -212,7 +212,7 @@
          data-course="Data Analytics &middot; Practice Task 1"
          data-desc="Worked with a sales revenue dataset to practice organizing and analyzing numerical data using Excel."
          data-tags="Excel,Dataset,Sales Data"
-         data-file="https://github.com/mariellacapitly/PORTFOLIO/raw/development/projects/PRACTICE/CAPITLY_MARIELLA_M.xlsx"
+         data-file="https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/PRACTICE/CAPITLY_MARIELLA_M.xlsx"
          data-filename="Practice-Task-1.xlsx">
       <div class="task-thumb thumb-blush">
         <div class="task-thumb-placeholder">
@@ -243,7 +243,7 @@
          data-course="Data Analytics &middot; Practice Task 2"
          data-desc="Built a sales dashboard in Excel using charts, pivot tables, and formatting to summarize sales performance."
          data-tags="Excel,Dashboard,Visualization"
-         data-file="https://github.com/mariellacapitly/PORTFOLIO/raw/development/projects/PRACTICE/MARIELLA_CAPITLY.xlsx"
+         data-file="https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/PRACTICE/MARIELLA_CAPITLY.xlsx"
          data-filename="Practice-Task-2.xlsx">
       <div class="task-thumb thumb-rose">
         <div class="task-thumb-placeholder">
@@ -274,7 +274,7 @@
          data-course="Data Analytics &middot; Power Query"
          data-desc="Used Power Query to import, transform, and load data. Practiced automating data prep steps like removing duplicates and merging tables."
          data-tags="Power Query,Data Prep,Excel"
-         data-file="https://github.com/mariellacapitly/PORTFOLIO/raw/development/projects/PRACTICE/CAPITLY_student_data.xlsx"
+         data-file="https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/PRACTICE/CAPITLY_student_data.xlsx"
          data-filename="Power-Query.xlsx">
       <div class="task-thumb thumb-deep">
         <div class="task-thumb-placeholder">
@@ -352,17 +352,47 @@
     document.body.style.overflow = 'hidden';
   }
 
-  /* ── FORCE DOWNLOAD ── */
+  /* ── FORCE DOWNLOAD via fetch + Blob ── */
   document.getElementById('mDownload').addEventListener('click', function() {
     if (!currentFileUrl) return;
-    var a = document.createElement('a');
-    a.href = currentFileUrl;
-    a.download = currentFileName;
-    a.target = '_blank';
-    a.rel = 'noopener noreferrer';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
+
+    var btn = this;
+    var originalText = btn.innerHTML;
+    btn.disabled = true;
+    btn.innerHTML = '&#8987; Downloading...';
+
+    fetch(currentFileUrl)
+      .then(function(response) {
+        if (!response.ok) throw new Error('Network response was not ok');
+        return response.blob();
+      })
+      .then(function(blob) {
+        var blobUrl = URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = blobUrl;
+        a.download = currentFileName;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        // Release the object URL after a short delay
+        setTimeout(function() { URL.revokeObjectURL(blobUrl); }, 1000);
+      })
+      .catch(function(err) {
+        console.error('Download failed:', err);
+        // Fallback: open in new tab if fetch fails (e.g. CORS)
+        var a = document.createElement('a');
+        a.href = currentFileUrl;
+        a.download = currentFileName;
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      })
+      .finally(function() {
+        btn.disabled = false;
+        btn.innerHTML = originalText;
+      });
   });
 
   function closeModal() {

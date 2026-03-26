@@ -23,19 +23,44 @@
     .task-card { background: #fff; border-radius: 16px; overflow: hidden; border: 1px solid rgba(139,26,26,0.09); box-shadow: 0 4px 24px rgba(44,24,16,0.07); transition: all 0.35s ease; }
     .task-card:hover { transform: translateY(-5px); box-shadow: 0 16px 48px rgba(44,24,16,0.13); }
     .task-card.hidden { display: none; }
-    .task-thumb { height: 190px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
-    .task-thumb-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.6rem; }
-    .task-thumb-placeholder svg { width: 40px; height: 40px; stroke: var(--crimson); fill: none; opacity: 0.35; }
-    .task-thumb-placeholder span { font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); }
+
+    /* ── Thumbnail ── */
+    .task-thumb {
+      height: 190px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    /* Image thumbnail */
+    .task-thumb.img-thumb {
+      background-size: cover;
+      background-position: center top;
+      background-repeat: no-repeat;
+    }
+    /* Fallback gradients */
     .thumb-cream { background: linear-gradient(135deg,#F5E6E0,#EDD0C5); }
     .thumb-blush { background: linear-gradient(135deg,#EAD5CC,#F0E8DF); }
     .thumb-rose  { background: linear-gradient(135deg,#EDD0C5,#D4A5A5); }
     .thumb-deep  { background: linear-gradient(135deg,#C8A0A0,#D4A5A5); }
-    .task-tag-badge { position: absolute; top: 0.75rem; left: 0.75rem; padding: 0.3rem 0.8rem; border-radius: 999px; font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500; }
-    .badge-excel { background: rgba(139,26,26,0.12); color: var(--crimson); }
-    .badge-query { background: rgba(139,26,26,0.18); color: var(--crimson); }
-    .badge-viz   { background: rgba(212,165,165,0.35); color: var(--crimson); }
-    .badge-gen   { background: rgba(139,26,26,0.08); color: var(--crimson); }
+
+    /* Badge only on image cards */
+    .task-tag-badge {
+      position: absolute;
+      top: 0.75rem;
+      left: 0.75rem;
+      padding: 0.3rem 0.8rem;
+      border-radius: 999px;
+      font-size: 0.6rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 500;
+      z-index: 2;
+      background: rgba(250,246,241,0.9);
+      color: var(--crimson);
+    }
+
     .task-body { padding: 1.4rem; }
     .task-num { font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.4rem; }
     .task-title { font-family: "Cormorant Garamond", serif; font-size: 1.25rem; font-weight: 600; color: var(--deep); margin-bottom: 0.5rem; line-height: 1.3; }
@@ -46,16 +71,23 @@
     .task-footer a, .task-footer button { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--crimson); text-decoration: none; display: flex; align-items: center; gap: 0.3rem; cursor: pointer; background: none; border: none; font-family: inherit; transition: gap 0.2s; }
     .task-footer a:hover, .task-footer button:hover { gap: 0.6rem; }
     .task-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--crimson); flex-shrink: 0; }
-    /* MODAL */
+
+    /* ── Modal ── */
     .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(44,24,16,0.5); z-index: 200; align-items: center; justify-content: center; padding: 1.5rem; backdrop-filter: blur(6px); }
     .modal-overlay.open { display: flex; }
     .modal-box { background: #FAF6F1; border-radius: 20px; max-width: 580px; width: 100%; max-height: 90vh; overflow-y: auto; box-shadow: 0 24px 80px rgba(44,24,16,0.25); border: 1px solid rgba(139,26,26,0.12); position: relative; animation: modalIn 0.3s ease; }
     @keyframes modalIn { from { opacity:0; transform: translateY(20px) scale(0.97); } to { opacity:1; transform: translateY(0) scale(1); } }
-    .modal-header-img { width: 100%; height: 200px; background: linear-gradient(135deg,#F5E6E0,#D4A5A5); border-radius: 20px 20px 0 0; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
-    .modal-header-img-inner { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
-    .modal-header-img-inner svg { width: 52px; height: 52px; stroke: var(--crimson); fill: none; opacity: 0.3; }
-    .modal-header-label { font-family: "Playfair Display", serif; font-size: 1.1rem; color: var(--crimson); opacity: 0.5; font-style: italic; }
-    .modal-close-btn { position: absolute; top: 1rem; right: 1rem; width: 32px; height: 32px; border-radius: 50%; background: rgba(250,246,241,0.9); border: 1px solid rgba(139,26,26,0.15); display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--crimson); font-size: 0.9rem; transition: background 0.2s; z-index: 10; }
+    .modal-header-img {
+      width: 100%;
+      height: 200px;
+      border-radius: 20px 20px 0 0;
+      position: relative;
+      overflow: hidden;
+      background-size: cover;
+      background-position: center top;
+      background-repeat: no-repeat;
+    }
+    .modal-close-btn { position: absolute; top: 1rem; right: 1rem; width: 32px; height: 32px; border-radius: 50%; background: rgba(250,246,241,0.92); border: 1px solid rgba(139,26,26,0.18); display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--crimson); font-size: 0.9rem; transition: background 0.2s; z-index: 10; }
     .modal-close-btn:hover { background: var(--blush); }
     .modal-content { padding: 1.8rem 2rem 2rem; }
     .modal-badge { display: inline-block; padding: 0.3rem 0.9rem; border-radius: 999px; font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 500; background: rgba(139,26,26,0.1); color: var(--crimson); margin-bottom: 0.7rem; }
@@ -67,8 +99,10 @@
     .modal-actions { display: flex; gap: 0.8rem; flex-wrap: wrap; }
     .modal-btn-download { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; background: var(--crimson); color: #fff; border-radius: 999px; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border: none; cursor: pointer; font-family: inherit; transition: all 0.3s; }
     .modal-btn-download:hover { background: var(--rose); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(139,26,26,0.25); }
+    .modal-btn-download:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
     .modal-btn-close { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; background: transparent; color: var(--muted); border: 1px solid rgba(139,26,26,0.2); border-radius: 999px; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; font-family: inherit; transition: all 0.3s; }
-    .modal-btn-close:hover { background: var(--parchment); }
+    .modal-btn-close:hover { background: var(--blush); }
+
     .deco-bow { position: fixed; top: 90px; right: -8px; width: 65px; height: 105px; pointer-events: none; z-index: 5; opacity: 0.8; }
     .deco-butterfly { position: fixed; bottom: 120px; left: 10px; width: 60px; height: 50px; pointer-events: none; z-index: 5; opacity: 0.75; transform: rotate(8deg); }
     .deco-bouquet { position: fixed; bottom: 30px; right: 8px; width: 72px; height: 90px; pointer-events: none; z-index: 5; opacity: 0.8; }
@@ -128,15 +162,6 @@
 <div class="modal-overlay" id="modalOverlay">
   <div class="modal-box">
     <div class="modal-header-img" id="modalHeaderImg">
-      <div class="modal-header-img-inner">
-        <svg viewBox="0 0 24 24" stroke-width="1">
-          <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
-          <polyline points="14 2 14 8 20 8"/>
-          <line x1="16" y1="13" x2="8" y2="13"/>
-          <line x1="16" y1="17" x2="8" y2="17"/>
-        </svg>
-        <span class="modal-header-label" id="modalHeaderLabel"></span>
-      </div>
       <button class="modal-close-btn" id="modalCloseX">&#10005;</button>
     </div>
     <div class="modal-content">
@@ -168,23 +193,17 @@
 
   <div class="tasks-grid">
 
-    <!-- Midterm Task 1 -->
+    <!-- Midterm Task 1 — MID1.png -->
     <div class="task-card" data-cat="excel"
       data-badge="Midterm Task 1"
       data-title="Data Cleaning and Preparation using Excel"
-      data-label="Midterm Task 1"
+      data-imgurl="https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/IMAGES/MID1.png"
       data-desc="Cleaned and prepared a raw dataset using Excel. Handled missing values, removed duplicates, corrected formatting errors, and structured the data ready for analysis."
       data-tags="Excel,Data Cleaning,Preparation"
       data-download="https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/MIDTERM/Bike%20Sales_Prepare_Lab%203.4.7_fixed.xlsx"
-      data-filename="Midterm-Task-1.xlsx"
-      data-bg="thumb-cream">
-      <div class="task-thumb thumb-cream">
-        <div class="task-thumb-placeholder">
-          <svg viewBox="0 0 24 24" stroke-width="1"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-          <span>Midterm Task 1</span>
-          <span style="font-size:0.55rem;color:var(--crimson);opacity:0.7;letter-spacing:0.08em;">&#128196; Excel Available</span>
-        </div>
-        <span class="task-tag-badge badge-excel">Excel</span>
+      data-filename="Midterm-Task-1.xlsx">
+      <div class="task-thumb img-thumb" style="background-image: url('https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/IMAGES/MID1.png');">
+        <span class="task-tag-badge">Midterm Task 1</span>
       </div>
       <div class="task-body">
         <div class="task-num">Midterm Task 1</div>
@@ -198,23 +217,17 @@
       </div>
     </div>
 
-    <!-- Midterm Task 2 -->
+    <!-- Midterm Task 2 — MID2.png -->
     <div class="task-card" data-cat="excel visualization"
       data-badge="Midterm Task 2"
       data-title="Data Analysis using Pivot Table"
-      data-label="Midterm Task 2"
+      data-imgurl="https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/IMAGES/MID2.png"
       data-desc="Used pivot tables in Excel to summarize, analyze, and explore a dataset. Identified patterns, compared categories, and drew insights from organized data summaries."
       data-tags="Excel,Pivot Table,Data Analysis"
       data-download="https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/MIDTERM/Bike_Sales_Pivot_Lab%20(1).xlsx"
-      data-filename="Midterm-Task-2.xlsx"
-      data-bg="thumb-blush">
-      <div class="task-thumb thumb-blush">
-        <div class="task-thumb-placeholder">
-          <svg viewBox="0 0 24 24" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-          <span>Midterm Task 2</span>
-          <span style="font-size:0.55rem;color:var(--crimson);opacity:0.7;letter-spacing:0.08em;">&#128196; Excel Available</span>
-        </div>
-        <span class="task-tag-badge badge-viz">Pivot Table</span>
+      data-filename="Midterm-Task-2.xlsx">
+      <div class="task-thumb img-thumb" style="background-image: url('https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/IMAGES/MID2.png');">
+        <span class="task-tag-badge">Midterm Task 2</span>
       </div>
       <div class="task-body">
         <div class="task-num">Midterm Task 2</div>
@@ -228,23 +241,17 @@
       </div>
     </div>
 
-    <!-- Midterm Task 3 -->
+    <!-- Midterm Task 3 — MID3.png -->
     <div class="task-card" data-cat="query excel"
       data-badge="Midterm Task 3"
       data-title="Data Prep, Cleaning &amp; Modeling w/ Power Query"
-      data-label="Midterm Task 3"
+      data-imgurl="https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/IMAGES/MID3.png"
       data-desc="Combined data preparation, cleaning, and modeling using Power Query. Transformed raw data into a structured model ready for analysis by automating transformation steps."
       data-tags="Power Query,Data Modeling,Data Cleaning"
       data-download="https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/PRACTICE/CAPITLY_student_data.xlsx"
-      data-filename="Midterm-Task-3.xlsx"
-      data-bg="thumb-rose">
-      <div class="task-thumb thumb-rose">
-        <div class="task-thumb-placeholder">
-          <svg viewBox="0 0 24 24" stroke-width="1"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
-          <span>Midterm Task 3</span>
-          <span style="font-size:0.55rem;color:var(--crimson);opacity:0.7;letter-spacing:0.08em;">&#128196; Excel Available</span>
-        </div>
-        <span class="task-tag-badge badge-query">Power Query</span>
+      data-filename="Midterm-Task-3.xlsx">
+      <div class="task-thumb img-thumb" style="background-image: url('https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/IMAGES/MID3.png');">
+        <span class="task-tag-badge">Midterm Task 3</span>
       </div>
       <div class="task-body">
         <div class="task-num">Midterm Task 3</div>
@@ -262,17 +269,10 @@
 </div>
 
 <footer>
-  Made with <span>&#9829;</span> by <span>Mariella &ldquo;Ella&rdquo; Capitly</span> &middot; BS Computer Science &middot; City College of Angeles &middot; 2025
+  Made with <span>&#9829;</span> by <span>Mariella &ldquo;Ella&rdquo; Capitly</span> &middot; BS Computer Science &middot; City College of Angeles &middot; 2026
 </footer>
 
 <script>
-  var bgMap = {
-    'thumb-cream': 'linear-gradient(135deg,#F5E6E0,#EDD0C5)',
-    'thumb-blush': 'linear-gradient(135deg,#EAD5CC,#F0E8DF)',
-    'thumb-rose':  'linear-gradient(135deg,#EDD0C5,#D4A5A5)',
-    'thumb-deep':  'linear-gradient(135deg,#C8A0A0,#D4A5A5)'
-  };
-
   document.querySelectorAll('.filter-btn').forEach(function(btn) {
     btn.addEventListener('click', function() {
       document.querySelectorAll('.filter-btn').forEach(function(b){ b.classList.remove('active'); });
@@ -293,7 +293,6 @@
   var mTitle     = document.getElementById('modalTitle');
   var mDesc      = document.getElementById('modalDesc');
   var mTags      = document.getElementById('modalTags');
-  var mLabel     = document.getElementById('modalHeaderLabel');
   var mHeaderImg = document.getElementById('modalHeaderImg');
   var currentFileUrl  = '';
   var currentFileName = '';
@@ -304,8 +303,15 @@
       mBadge.textContent = card.getAttribute('data-badge');
       mTitle.innerHTML   = card.getAttribute('data-title');
       mDesc.innerHTML    = card.getAttribute('data-desc');
-      mLabel.textContent = card.getAttribute('data-label');
-      mHeaderImg.style.background = bgMap[card.getAttribute('data-bg')] || bgMap['thumb-cream'];
+
+      // Set modal header image
+      var imgUrl = card.getAttribute('data-imgurl') || '';
+      if (imgUrl) {
+        mHeaderImg.style.backgroundImage = "url('" + imgUrl + "')";
+      } else {
+        mHeaderImg.style.backgroundImage = 'linear-gradient(135deg,#F5E6E0,#D4A5A5)';
+      }
+
       mTags.innerHTML = '';
       card.getAttribute('data-tags').split(',').forEach(function(t) {
         var s = document.createElement('span');
@@ -323,8 +329,15 @@
   /* ── FORCE DOWNLOAD via fetch + blob ── */
   document.getElementById('modalDownload').addEventListener('click', function() {
     if (!currentFileUrl) return;
+    var btn = this;
+    var orig = btn.innerHTML;
+    btn.disabled = true;
+    btn.innerHTML = '&#8987; Downloading...';
     fetch(currentFileUrl)
-      .then(function(res) { return res.blob(); })
+      .then(function(res) {
+        if (!res.ok) throw new Error('fetch failed');
+        return res.blob();
+      })
       .then(function(blob) {
         var a = document.createElement('a');
         a.href = URL.createObjectURL(blob);
@@ -335,8 +348,11 @@
         URL.revokeObjectURL(a.href);
       })
       .catch(function() {
-        /* fallback: open in new tab if fetch fails */
         window.open(currentFileUrl, '_blank');
+      })
+      .finally(function() {
+        btn.disabled = false;
+        btn.innerHTML = orig;
       });
   });
 

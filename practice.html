@@ -24,19 +24,51 @@
     .task-card { background: #fff; border-radius: 16px; overflow: hidden; border: 1px solid rgba(139,26,26,0.09); box-shadow: 0 4px 24px rgba(44,24,16,0.07); transition: all 0.35s ease; }
     .task-card:hover { transform: translateY(-5px); box-shadow: 0 16px 48px rgba(44,24,16,0.13); }
     .task-card.hidden { display: none; }
-    .task-thumb { height: 190px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
-    .task-thumb-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.6rem; }
-    .task-thumb-placeholder svg { width: 40px; height: 40px; stroke: var(--crimson); fill: none; opacity: 0.35; }
-    .task-thumb-placeholder span { font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); }
+
+    /* ── Thumbnail base ── */
+    .task-thumb {
+      height: 190px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    /* Image thumbnail — just the image, nothing on top */
+    .task-thumb.img-thumb {
+      background-size: cover;
+      background-position: center top;
+      background-repeat: no-repeat;
+    }
+    /* Fallback gradients */
     .thumb-cream { background: linear-gradient(135deg,#F5E6E0,#EDD0C5); }
     .thumb-blush { background: linear-gradient(135deg,#EAD5CC,#F0E8DF); }
     .thumb-rose  { background: linear-gradient(135deg,#EDD0C5,#D4A5A5); }
     .thumb-deep  { background: linear-gradient(135deg,#C8A0A0,#D4A5A5); }
-    .task-tag-badge { position: absolute; top: 0.75rem; left: 0.75rem; padding: 0.3rem 0.8rem; border-radius: 999px; font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500; }
-    .badge-excel { background: rgba(139,26,26,0.12); color: var(--crimson); }
-    .badge-query { background: rgba(139,26,26,0.18); color: var(--crimson); }
-    .badge-viz   { background: rgba(212,165,165,0.35); color: var(--crimson); }
+
+    /* Badge pill — shown on image cards */
+    .task-tag-badge {
+      position: absolute;
+      top: 0.75rem;
+      left: 0.75rem;
+      padding: 0.3rem 0.8rem;
+      border-radius: 999px;
+      font-size: 0.6rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 500;
+      z-index: 2;
+    }
+    .badge-excel { background: rgba(250,246,241,0.9); color: var(--crimson); }
+    .badge-query { background: rgba(250,246,241,0.9); color: var(--crimson); }
+    .badge-viz   { background: rgba(250,246,241,0.9); color: var(--crimson); }
     .badge-gen   { background: rgba(139,26,26,0.08); color: var(--crimson); }
+
+    /* Fallback placeholder — only for gradient cards */
+    .task-thumb-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.6rem; }
+    .task-thumb-placeholder svg { width: 40px; height: 40px; stroke: var(--crimson); fill: none; opacity: 0.35; }
+    .task-thumb-placeholder span { font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); }
+
     .task-body { padding: 1.4rem; }
     .task-num { font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.4rem; }
     .task-title { font-family: "Cormorant Garamond", serif; font-size: 1.25rem; font-weight: 600; color: var(--deep); margin-bottom: 0.5rem; line-height: 1.3; }
@@ -47,18 +79,30 @@
     .task-footer a { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--crimson); text-decoration: none; display: flex; align-items: center; gap: 0.3rem; transition: gap 0.2s; cursor: pointer; }
     .task-footer a:hover { gap: 0.6rem; }
     .task-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--crimson); flex-shrink: 0; }
-    .pdf-indicator { font-size: 0.55rem; letter-spacing: 0.1em; color: var(--crimson); opacity: 0.65; margin-top: 0.2rem; }
+
     .deco-bow { position: fixed; top: 90px; right: -8px; width: 65px; height: 105px; pointer-events: none; z-index: 5; opacity: 0.8; }
     .deco-butterfly { position: fixed; bottom: 120px; left: 10px; width: 60px; height: 50px; pointer-events: none; z-index: 5; opacity: 0.75; transform: rotate(8deg); }
     .deco-bouquet { position: fixed; bottom: 30px; right: 8px; width: 72px; height: 90px; pointer-events: none; z-index: 5; opacity: 0.8; }
     @media(max-width:600px) { .deco-bow,.deco-butterfly,.deco-bouquet { display:none; } .tasks-grid { grid-template-columns:1fr; } }
 
+    /* ── Modal ── */
     .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(44,24,16,0.5); z-index: 200; align-items: center; justify-content: center; padding: 1.5rem; backdrop-filter: blur(6px); }
     .modal-overlay.open { display: flex; animation: fadeIn 0.2s ease; }
     @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
     .modal-box { background: #FAF6F1; border-radius: 20px; max-width: 580px; width: 100%; overflow: hidden; box-shadow: 0 32px 80px rgba(44,24,16,0.25); border: 1px solid rgba(139,26,26,0.12); animation: slideUp 0.3s ease; position: relative; }
     @keyframes slideUp { from { opacity:0; transform: translateY(28px) scale(0.97); } to { opacity:1; transform: translateY(0) scale(1); } }
-    .modal-thumb { width:100%; height:180px; display:flex; align-items:center; justify-content:center; position:relative; }
+    .modal-thumb {
+      width: 100%;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      background-size: cover;
+      background-position: center top;
+      background-repeat: no-repeat;
+    }
     .modal-thumb svg.thumb-icon { width:48px; height:48px; stroke: var(--crimson); fill:none; opacity:0.3; stroke-width:1; }
     .modal-bow { position:absolute; top:-24px; left:50%; transform:translateX(-50%); width:46px; height:72px; pointer-events:none; z-index:5; }
     .modal-close { position:absolute; top:0.9rem; right:0.9rem; width:32px; height:32px; border-radius:50%; background:rgba(250,246,241,0.92); border:1px solid rgba(139,26,26,0.18); display:flex; align-items:center; justify-content:center; cursor:pointer; color:var(--crimson); font-size:0.9rem; transition:background 0.2s; z-index:10; }
@@ -172,9 +216,10 @@
   </div>
   <div class="tasks-grid">
 
-    <!-- Paired Task 1 -->
+    <!-- Paired Task 1 — already has image, keep as-is -->
     <div class="task-card" data-cat="general"
          data-thumb="thumb-cream"
+         data-imgurl=""
          data-icon="<path d=&quot;M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z&quot;/><polyline points=&quot;14 2 14 8 20 8&quot;/><line x1=&quot;16&quot; y1=&quot;13&quot; x2=&quot;8&quot; y2=&quot;13&quot;/><line x1=&quot;16&quot; y1=&quot;17&quot; x2=&quot;8&quot; y2=&quot;17&quot;/>"
          data-badge="Paired Task 1"
          data-title="The Data Analysis Process"
@@ -183,7 +228,8 @@
          data-tags="Data Analysis,Process,General"
          data-file="https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/PRACTICE/Blue%20and%20White%20Gradient%20Modern%20Project%20Presentation.pdf"
          data-filename="Paired-Task-1.pdf">
-      <div class="task-thumb" style="background-image: url('https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/IMAGES/PAIREDTASK.png'); background-size: cover; background-position: center;">
+      <div class="task-thumb" style="background-image: url('https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/IMAGES/PAIREDTASK.png'); background-size: cover; background-position: center top;">
+        <span class="task-tag-badge badge-gen">Paired Task 1</span>
       </div>
       <div class="task-body">
         <div class="task-num">Paired Task 1</div>
@@ -197,9 +243,10 @@
       </div>
     </div>
 
-    <!-- Practice Task 1 -->
+    <!-- Practice Task 1 — PRAC1.png background -->
     <div class="task-card" data-cat="excel"
          data-thumb="thumb-blush"
+         data-imgurl="https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/IMAGES/PRAC1.png"
          data-icon="<rect x=&quot;3&quot; y=&quot;3&quot; width=&quot;18&quot; height=&quot;18&quot; rx=&quot;2&quot;/><path d=&quot;M3 9h18M9 21V9&quot;/>"
          data-badge="Practice Task 1"
          data-title="Sales Revenue Dataset"
@@ -208,12 +255,7 @@
          data-tags="Excel,Dataset,Sales Data"
          data-file="https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/PRACTICE/CAPITLY_MARIELLA_M.xlsx"
          data-filename="Practice-Task-1.xlsx">
-      <div class="task-thumb thumb-blush">
-        <div class="task-thumb" style="background-image: url('https://github.com/mariellacapitly/PORTFOLIO/blob/development/projects/IMAGES/PRAC1.png'); background-size: cover; background-position: center;">
-          <svg viewBox="0 0 24 24" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-          <span>Practice Task 1</span>
-          <span class="pdf-indicator">&#128196; Excel Available</span>
-        </div>
+      <div class="task-thumb img-thumb" style="background-image: url('https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/IMAGES/PRAC1.png');">
         <span class="task-tag-badge badge-excel">Practice Task 1</span>
       </div>
       <div class="task-body">
@@ -228,9 +270,10 @@
       </div>
     </div>
 
-    <!-- Practice Task 2 -->
+    <!-- Practice Task 2 — PRAC2.png background -->
     <div class="task-card" data-cat="excel visualization"
          data-thumb="thumb-rose"
+         data-imgurl="https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/IMAGES/PRAC2.png"
          data-icon="<path d=&quot;M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z&quot;/>"
          data-badge="Practice Task 2"
          data-title="Sales Dashboard"
@@ -239,12 +282,7 @@
          data-tags="Excel,Dashboard,Visualization"
          data-file="https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/PRACTICE/MARIELLA_CAPITLY.xlsx"
          data-filename="Practice-Task-2.xlsx">
-      <div class="task-thumb thumb-rose">
-        <div class="task-thumb-placeholder">
-          <svg viewBox="0 0 24 24" stroke-width="1"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
-          <span>Practice Task 2</span>
-          <span class="pdf-indicator">&#128196; Excel Available</span>
-        </div>
+      <div class="task-thumb img-thumb" style="background-image: url('https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/IMAGES/PRAC2.png');">
         <span class="task-tag-badge badge-viz">Practice Task 2</span>
       </div>
       <div class="task-body">
@@ -259,9 +297,10 @@
       </div>
     </div>
 
-    <!-- Power Query -->
+    <!-- Power Query — PRAC3.png background -->
     <div class="task-card" data-cat="query"
          data-thumb="thumb-deep"
+         data-imgurl="https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/IMAGES/PRAC3.png"
          data-icon="<ellipse cx=&quot;12&quot; cy=&quot;5&quot; rx=&quot;9&quot; ry=&quot;3&quot;/><path d=&quot;M21 12c0 1.66-4 3-9 3s-9-1.34-9-3&quot;/><path d=&quot;M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5&quot;/>"
          data-badge="Power Query"
          data-title="Power Query"
@@ -270,12 +309,7 @@
          data-tags="Power Query,Data Prep,Excel"
          data-file="https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/PRACTICE/CAPITLY_student_data.xlsx"
          data-filename="Power-Query.xlsx">
-      <div class="task-thumb thumb-deep">
-        <div class="task-thumb-placeholder">
-          <svg viewBox="0 0 24 24" stroke-width="1"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
-          <span>Power Query</span>
-          <span class="pdf-indicator">&#128196; Excel Available</span>
-        </div>
+      <div class="task-thumb img-thumb" style="background-image: url('https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/IMAGES/PRAC3.png');">
         <span class="task-tag-badge badge-query">Power Query</span>
       </div>
       <div class="task-body">
@@ -314,8 +348,21 @@
 
   function openModal(el) {
     var c = el.closest('.task-card');
-    document.getElementById('mThumb').className = 'modal-thumb ' + (c.dataset.thumb || 'thumb-cream');
-    document.getElementById('mIcon').innerHTML = c.dataset.icon || '';
+    var imgUrl = c.dataset.imgurl || '';
+    var mThumb = document.getElementById('mThumb');
+
+    // Set thumb background: image if available, else gradient class
+    if (imgUrl) {
+      mThumb.className = 'modal-thumb';
+      mThumb.style.backgroundImage = "url('" + imgUrl + "')";
+      document.getElementById('mIcon').style.display = 'none';
+    } else {
+      mThumb.className = 'modal-thumb ' + (c.dataset.thumb || 'thumb-cream');
+      mThumb.style.backgroundImage = '';
+      document.getElementById('mIcon').style.display = '';
+      document.getElementById('mIcon').innerHTML = c.dataset.icon || '';
+    }
+
     document.getElementById('mBadge').textContent = c.dataset.badge || '';
     document.getElementById('mTitle').textContent = c.dataset.title || '';
     document.getElementById('mCourse').textContent = c.dataset.course || '';
@@ -349,12 +396,10 @@
   /* ── FORCE DOWNLOAD via fetch + Blob ── */
   document.getElementById('mDownload').addEventListener('click', function() {
     if (!currentFileUrl) return;
-
     var btn = this;
     var originalText = btn.innerHTML;
     btn.disabled = true;
     btn.innerHTML = '&#8987; Downloading...';
-
     fetch(currentFileUrl)
       .then(function(response) {
         if (!response.ok) throw new Error('Network response was not ok');
@@ -368,12 +413,9 @@
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
-        // Release the object URL after a short delay
         setTimeout(function() { URL.revokeObjectURL(blobUrl); }, 1000);
       })
       .catch(function(err) {
-        console.error('Download failed:', err);
-        // Fallback: open in new tab if fetch fails (e.g. CORS)
         var a = document.createElement('a');
         a.href = currentFileUrl;
         a.download = currentFileName;

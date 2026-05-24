@@ -3,16 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Practice Tasks - Mariella Capitly</title>
+  <title>Finals Tasks - Mariella Capitly</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Playfair+Display:ital,wght@0,700;1,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <style>
-
     .page-wrap { max-width: 1100px; margin: 0 auto; padding: 7rem 2rem 5rem; }
     .back-link { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--crimson); text-decoration: none; margin-bottom: 2.5rem; transition: gap 0.2s; }
     .back-link:hover { gap: 0.8rem; }
     .page-header { text-align: center; margin-bottom: 3rem; }
-    .page-section-label { font-size: 0.68rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--crimson); margin-bottom: 0.8rem; }
     .page-main-title { font-family: "Playfair Display", serif; font-size: clamp(2.4rem,5vw,4rem); font-weight: 700; color: var(--deep); line-height: 1.1; margin-bottom: 1rem; }
     .page-main-title em { font-style: italic; color: var(--crimson); }
     .page-subtitle { font-size: 0.95rem; color: var(--muted); max-width: 540px; margin: 0 auto 2.5rem; line-height: 1.8; }
@@ -25,7 +23,6 @@
     .task-card:hover { transform: translateY(-5px); box-shadow: 0 16px 48px rgba(44,24,16,0.13); }
     .task-card.hidden { display: none; }
 
-    /* ── Thumbnail base ── */
     .task-thumb {
       height: 190px;
       display: flex;
@@ -34,20 +31,19 @@
       position: relative;
       overflow: hidden;
     }
-    /* Image thumbnail */
     .task-thumb.img-thumb {
       background-size: cover;
       background-position: center top;
       background-repeat: no-repeat;
     }
-    /* Fallback gradients */
-    .thumb-cream { background: linear-gradient(135deg,#F5E6E0,#EDD0C5); }
-    .thumb-blush { background: linear-gradient(135deg,#EAD5CC,#F0E8DF); }
-    .thumb-rose  { background: linear-gradient(135deg,#EDD0C5,#D4A5A5); }
-    .thumb-deep  { background: linear-gradient(135deg,#C8A0A0,#D4A5A5); }
-    .thumb-mauve { background: linear-gradient(135deg,#D4B0C0,#C0A0B0); }
+    .thumb-cream  { background: linear-gradient(135deg,#F5E6E0,#EDD0C5); }
+    .thumb-blush  { background: linear-gradient(135deg,#EAD5CC,#F0E8DF); }
+    .thumb-rose   { background: linear-gradient(135deg,#EDD0C5,#D4A5A5); }
+    .thumb-deep   { background: linear-gradient(135deg,#C8A0A0,#D4A5A5); }
+    .thumb-wine   { background: linear-gradient(135deg,#B07070,#C8A0A0); }
+    .thumb-sand   { background: linear-gradient(135deg,#E8D5B0,#D4B896); }
+    .thumb-mauve  { background: linear-gradient(135deg,#D4B0C0,#C0A0B0); }
 
-    /* Badge pill */
     .task-tag-badge {
       position: absolute;
       top: 0.75rem;
@@ -59,75 +55,67 @@
       text-transform: uppercase;
       font-weight: 500;
       z-index: 2;
+      background: rgba(250,246,241,0.92);
+      color: var(--crimson);
     }
-    .badge-excel { background: rgba(250,246,241,0.9); color: var(--crimson); }
-    .badge-query { background: rgba(250,246,241,0.9); color: var(--crimson); }
-    .badge-viz   { background: rgba(250,246,241,0.9); color: var(--crimson); }
-    .badge-gen   { background: rgba(139,26,26,0.08); color: var(--crimson); }
-    .badge-sql   { background: rgba(250,246,241,0.9); color: var(--crimson); }
 
-    /* Fallback placeholder — only for gradient cards */
-    .task-thumb-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.6rem; }
-    .task-thumb-placeholder svg { width: 40px; height: 40px; stroke: var(--crimson); fill: none; opacity: 0.35; }
-    .task-thumb-placeholder span { font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); }
+    .thumb-icon-wrap { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
+    .thumb-icon-wrap svg { width: 38px; height: 38px; stroke: var(--crimson); fill: none; opacity: 0.3; stroke-width: 1.5; }
+    .thumb-icon-label { font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); opacity: 0.7; }
 
     .task-body { padding: 1.4rem; }
-    .task-num { font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.4rem; }
     .task-title { font-family: "Cormorant Garamond", serif; font-size: 1.25rem; font-weight: 600; color: var(--deep); margin-bottom: 0.5rem; line-height: 1.3; }
     .task-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.7; margin-bottom: 1rem; }
     .task-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
     .task-tag { padding: 0.2rem 0.65rem; background: var(--blush); color: var(--crimson); border-radius: 999px; font-size: 0.6rem; letter-spacing: 0.08em; text-transform: uppercase; }
     .task-footer { padding: 0.9rem 1.4rem; border-top: 1px solid rgba(139,26,26,0.07); display: flex; justify-content: space-between; align-items: center; }
-    .task-footer a { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--crimson); text-decoration: none; display: flex; align-items: center; gap: 0.3rem; transition: gap 0.2s; cursor: pointer; }
-    .task-footer a:hover { gap: 0.6rem; }
+    .task-footer button { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--crimson); display: flex; align-items: center; gap: 0.3rem; cursor: pointer; background: none; border: none; font-family: inherit; transition: gap 0.2s; }
+    .task-footer button:hover { gap: 0.6rem; }
     .task-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--crimson); flex-shrink: 0; }
 
     .deco-bow { position: fixed; top: 90px; right: -8px; width: 65px; height: 105px; pointer-events: none; z-index: 5; opacity: 0.8; }
     .deco-butterfly { position: fixed; bottom: 120px; left: 10px; width: 60px; height: 50px; pointer-events: none; z-index: 5; opacity: 0.75; transform: rotate(8deg); }
     .deco-bouquet { position: fixed; bottom: 30px; right: 8px; width: 72px; height: 90px; pointer-events: none; z-index: 5; opacity: 0.8; }
-    @media(max-width:600px) { .deco-bow,.deco-butterfly,.deco-bouquet { display:none; } .tasks-grid { grid-template-columns:1fr; } }
+    @media(max-width:600px){ .deco-bow,.deco-butterfly,.deco-bouquet{display:none;} .tasks-grid{grid-template-columns:1fr;} .modal-actions{flex-direction:column;} }
 
-    /* ── Modal ── */
     .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(44,24,16,0.5); z-index: 200; align-items: center; justify-content: center; padding: 1.5rem; backdrop-filter: blur(6px); }
-    .modal-overlay.open { display: flex; animation: fadeIn 0.2s ease; }
-    @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-    .modal-box { background: #FAF6F1; border-radius: 20px; max-width: 580px; width: 100%; overflow: hidden; box-shadow: 0 32px 80px rgba(44,24,16,0.25); border: 1px solid rgba(139,26,26,0.12); animation: slideUp 0.3s ease; position: relative; }
-    @keyframes slideUp { from { opacity:0; transform: translateY(28px) scale(0.97); } to { opacity:1; transform: translateY(0) scale(1); } }
-    .modal-thumb {
+    .modal-overlay.open { display: flex; }
+    .modal-box { background: #FAF6F1; border-radius: 20px; max-width: 580px; width: 100%; max-height: 90vh; overflow-y: auto; box-shadow: 0 24px 80px rgba(44,24,16,0.25); border: 1px solid rgba(139,26,26,0.12); position: relative; animation: modalIn 0.3s ease; }
+    @keyframes modalIn { from { opacity:0; transform: translateY(20px) scale(0.97); } to { opacity:1; transform: translateY(0) scale(1); } }
+    .modal-header-img {
       width: 100%;
       height: 200px;
+      border-radius: 20px 20px 0 0;
+      position: relative;
+      overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
-      position: relative;
-      overflow: hidden;
       background-size: cover;
       background-position: center top;
       background-repeat: no-repeat;
     }
-    .modal-thumb svg.thumb-icon { width:48px; height:48px; stroke: var(--crimson); fill:none; opacity:0.3; stroke-width:1; }
-    .modal-bow { position:absolute; top:-24px; left:50%; transform:translateX(-50%); width:46px; height:72px; pointer-events:none; z-index:5; }
-    .modal-close { position:absolute; top:0.9rem; right:0.9rem; width:32px; height:32px; border-radius:50%; background:rgba(250,246,241,0.92); border:1px solid rgba(139,26,26,0.18); display:flex; align-items:center; justify-content:center; cursor:pointer; color:var(--crimson); font-size:0.9rem; transition:background 0.2s; z-index:10; }
-    .modal-close:hover { background: var(--blush); }
-    .modal-body { padding: 1.6rem 2rem 2rem; }
-    .modal-badge { display:inline-block; padding:0.28rem 0.85rem; border-radius:999px; font-size:0.58rem; letter-spacing:0.15em; text-transform:uppercase; font-weight:500; background:rgba(139,26,26,0.1); color:var(--crimson); margin-bottom:0.7rem; }
-    .modal-title { font-family:"Playfair Display",serif; font-size:1.55rem; font-weight:700; color:var(--deep); margin-bottom:0.3rem; line-height:1.2; }
-    .modal-course { font-size:0.65rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--accent); margin-bottom:1rem; }
-    .modal-desc { font-size:0.84rem; color:var(--muted); line-height:1.8; margin-bottom:1.1rem; }
-    .modal-tags { display:flex; flex-wrap:wrap; gap:0.4rem; margin-bottom:1.4rem; }
-    .modal-tag { padding:0.22rem 0.7rem; background:var(--blush); color:var(--crimson); border-radius:999px; font-size:0.6rem; letter-spacing:0.08em; text-transform:uppercase; }
-    .modal-divider { height:1px; background:rgba(139,26,26,0.09); margin-bottom:1.4rem; }
-    .modal-actions { display:flex; gap:0.8rem; flex-wrap:wrap; align-items:center; }
-    .modal-btn-download { display:inline-flex; align-items:center; gap:0.5rem; padding:0.75rem 1.5rem; background:var(--crimson); color:#fff; border:none; border-radius:999px; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; text-decoration:none; cursor:pointer; transition:all 0.25s; font-family:"DM Sans",sans-serif; }
-    .modal-btn-download:hover { background:var(--rose); transform:translateY(-1px); box-shadow:0 6px 20px rgba(139,26,26,0.25); }
-    .modal-btn-download:disabled { opacity:0.6; cursor:not-allowed; transform:none; }
-    .modal-btn-close { display:inline-flex; align-items:center; gap:0.5rem; padding:0.75rem 1.5rem; background:transparent; color:var(--crimson); border:1px solid var(--crimson); border-radius:999px; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; cursor:pointer; transition:all 0.25s; font-family:"DM Sans",sans-serif; }
-    .modal-btn-close:hover { background:var(--blush); }
-    .no-file-note { font-size:0.75rem; color:var(--accent); font-style:italic; }
-
+    .modal-header-icon { display: flex; flex-direction: column; align-items: center; gap: 0.6rem; }
+    .modal-header-icon svg { width: 52px; height: 52px; stroke: var(--crimson); fill: none; opacity: 0.25; stroke-width: 1.2; }
+    .modal-close-btn { position: absolute; top: 1rem; right: 1rem; width: 32px; height: 32px; border-radius: 50%; background: rgba(250,246,241,0.92); border: 1px solid rgba(139,26,26,0.18); display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--crimson); font-size: 0.9rem; transition: background 0.2s; z-index: 10; }
+    .modal-close-btn:hover { background: var(--blush); }
+    .modal-content { padding: 1.8rem 2rem 2rem; }
+    .modal-badge { display: inline-block; padding: 0.3rem 0.9rem; border-radius: 999px; font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 500; background: rgba(139,26,26,0.1); color: var(--crimson); margin-bottom: 0.7rem; }
+    .modal-title { font-family: "Playfair Display", serif; font-size: 1.6rem; font-weight: 700; color: var(--deep); margin-bottom: 0.5rem; line-height: 1.2; }
+    .modal-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.8; margin-bottom: 1.2rem; }
+    .modal-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.5rem; }
+    .modal-tag { padding: 0.22rem 0.7rem; background: var(--blush); color: var(--crimson); border-radius: 999px; font-size: 0.6rem; letter-spacing: 0.08em; text-transform: uppercase; }
+    .modal-divider { height: 1px; background: rgba(139,26,26,0.1); margin-bottom: 1.5rem; }
+    .modal-actions { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+    .modal-btn-download { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; background: var(--crimson); color: #fff; border-radius: 999px; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border: none; cursor: pointer; font-family: inherit; transition: all 0.3s; }
+    .modal-btn-download:hover { background: var(--rose); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(139,26,26,0.25); }
+    .modal-btn-download:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+    .modal-btn-close { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; background: transparent; color: var(--muted); border: 1px solid rgba(139,26,26,0.2); border-radius: 999px; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; font-family: inherit; transition: all 0.3s; }
+    .modal-btn-close:hover { background: var(--blush); }
   </style>
 </head>
 <body>
+
 <nav>
   <div class="nav-logo">Ella.</div>
   <ul class="nav-links">
@@ -137,9 +125,12 @@
     <li><a href="index.html#contact">Contact</a></li>
   </ul>
 </nav>
+
 <svg class="deco-bow" viewBox="0 0 70 110" fill="none">
   <path d="M33 22 C26 15 6 8 8 2 C10 -1 22 6 33 22Z" fill="#6B0F0F" opacity="0.95"/>
+  <path d="M33 22 C26 15 6 8 8 2 C10 -1 22 6 33 22Z" fill="#D47070" opacity="0.3"/>
   <path d="M37 22 C44 15 64 8 62 2 C60 -1 48 6 37 22Z" fill="#6B0F0F" opacity="0.95"/>
+  <path d="M37 22 C44 15 64 8 62 2 C60 -1 48 6 37 22Z" fill="#D47070" opacity="0.3"/>
   <ellipse cx="35" cy="22" rx="5" ry="4" fill="#3A0606"/>
   <ellipse cx="35" cy="22" rx="3" ry="2.5" fill="#6B0F0F"/>
   <path d="M32 25 C28 34 24 44 27 54 C30 64 23 73 25 83 C27 93 21 102 19 109" stroke="#6B0F0F" stroke-width="4.5" stroke-linecap="round" fill="none"/>
@@ -157,6 +148,8 @@
   <path d="M35 30 C30 36 16 44 18 50 C20 56 32 50 35 30Z" fill="#7B1111" opacity="0.85"/>
   <path d="M35 30 C40 36 54 44 52 50 C50 56 38 50 35 30Z" fill="#7B1111" opacity="0.85"/>
   <ellipse cx="35" cy="30" rx="2.5" ry="4" fill="#3A0606"/>
+  <path d="M34 27 C32 24 30 22" stroke="#3A0606" stroke-width="1" stroke-linecap="round" fill="none"/>
+  <path d="M36 27 C38 24 40 22" stroke="#3A0606" stroke-width="1" stroke-linecap="round" fill="none"/>
 </svg>
 <svg class="deco-bouquet" viewBox="0 0 80 100" fill="none">
   <path d="M40 95 C38 80 36 65 34 50" stroke="#4A6B1A" stroke-width="2" stroke-linecap="round" fill="none"/>
@@ -169,35 +162,22 @@
   <path d="M20 75 C26 70 34 68 40 68 C46 68 54 70 60 75 L56 85 C52 88 46 90 40 90 C34 90 28 88 24 85Z" fill="#C8A96E" opacity="0.85"/>
 </svg>
 
+<!-- MODAL -->
 <div class="modal-overlay" id="modalOverlay">
   <div class="modal-box">
-    <svg class="modal-bow" viewBox="0 0 70 110" fill="none">
-      <path d="M33 22 C26 15 6 8 8 2 C10 -1 22 6 33 22Z" fill="#6B0F0F" opacity="0.9"/>
-      <path d="M33 22 C26 15 6 8 8 2 C10 -1 22 6 33 22Z" fill="#D47070" opacity="0.25"/>
-      <path d="M37 22 C44 15 64 8 62 2 C60 -1 48 6 37 22Z" fill="#6B0F0F" opacity="0.9"/>
-      <path d="M37 22 C44 15 64 8 62 2 C60 -1 48 6 37 22Z" fill="#D47070" opacity="0.25"/>
-      <ellipse cx="35" cy="22" rx="5" ry="4" fill="#3A0606"/>
-      <ellipse cx="35" cy="22" rx="3" ry="2.5" fill="#6B0F0F"/>
-      <path d="M32 25 C28 34 24 44 27 54 C30 64 23 73 25 83" stroke="#6B0F0F" stroke-width="4" stroke-linecap="round" fill="none"/>
-      <path d="M32 25 C28 34 24 44 27 54 C30 64 23 73 25 83" stroke="#E8A0A0" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.35"/>
-      <path d="M38 25 C42 34 46 44 43 54 C40 64 47 73 45 83" stroke="#6B0F0F" stroke-width="4" stroke-linecap="round" fill="none"/>
-      <path d="M38 25 C42 34 46 44 43 54 C40 64 47 73 45 83" stroke="#E8A0A0" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.35"/>
-    </svg>
-    <div class="modal-thumb thumb-cream" id="mThumb">
-      <svg class="thumb-icon" id="mIcon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>
+    <div class="modal-header-img" id="modalHeaderImg">
+      <div class="modal-header-icon" id="modalHeaderIcon"></div>
+      <button class="modal-close-btn" id="modalCloseX">&#10005;</button>
     </div>
-    <button class="modal-close" id="modalClose">&#10005;</button>
-    <div class="modal-body">
-      <span class="modal-badge" id="mBadge"></span>
-      <div class="modal-title" id="mTitle"></div>
-      <div class="modal-course" id="mCourse"></div>
-      <p class="modal-desc" id="mDesc"></p>
-      <div class="modal-tags" id="mTags"></div>
+    <div class="modal-content">
+      <span class="modal-badge" id="modalBadge"></span>
+      <h2 class="modal-title" id="modalTitle"></h2>
+      <p class="modal-desc" id="modalDesc"></p>
+      <div class="modal-tags" id="modalTags"></div>
       <div class="modal-divider"></div>
       <div class="modal-actions">
-        <button id="mDownload" class="modal-btn-download" style="display:none;">&#8595; Download File</button>
-        <span id="mNoFile" class="no-file-note" style="display:none;">No file attached yet.</span>
-        <button class="modal-btn-close" onclick="closeModal()">Close</button>
+        <button class="modal-btn-download" id="modalDownload">&#8659; Download File</button>
+        <button class="modal-btn-close" id="modalCloseBtn">&#10005; Close</button>
       </div>
     </div>
   </div>
@@ -206,153 +186,128 @@
 <div class="page-wrap">
   <a href="index.html" class="back-link">&#8592; Back to Portfolio</a>
   <div class="page-header">
-    <h1 class="page-main-title">Practice <em>Tasks</em></h1>
-    <p class="page-subtitle">Tasks and activities completed for the midterm, exploring data analysis and visualization using Excel and Power Query.</p>
+    <h1 class="page-main-title">Finals <em>Tasks</em></h1>
+    <p class="page-subtitle">Final requirements showcasing data analysis with Power BI, SQL, and CSV datasets — the culmination of my Data Analytics coursework.</p>
     <div class="filters">
       <button class="filter-btn active" data-filter="all">All</button>
-      <button class="filter-btn" data-filter="general">General</button>
-      <button class="filter-btn" data-filter="excel">Excel</button>
-      <button class="filter-btn" data-filter="visualization">Visualization</button>
-      <button class="filter-btn" data-filter="query">Power Query</button>
+      <button class="filter-btn" data-filter="powerbi">Power BI</button>
       <button class="filter-btn" data-filter="sql">SQL</button>
+      <button class="filter-btn" data-filter="csv">CSV Data</button>
+      <button class="filter-btn" data-filter="essay">Essay</button>
     </div>
   </div>
+
   <div class="tasks-grid">
 
-    <!-- Paired Task 1 -->
-    <div class="task-card" data-cat="general"
-         data-thumb="thumb-cream"
-         data-imgurl=""
-         data-icon="<path d=&quot;M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z&quot;/><polyline points=&quot;14 2 14 8 20 8&quot;/><line x1=&quot;16&quot; y1=&quot;13&quot; x2=&quot;8&quot; y2=&quot;13&quot;/><line x1=&quot;16&quot; y1=&quot;17&quot; x2=&quot;8&quot; y2=&quot;17&quot;/>"
-         data-badge="Paired Task 1"
-         data-title="The Data Analysis Process"
-         data-course="Data Analytics &middot; Paired Task 1"
-         data-desc="A presentation exploring the end-to-end data analysis process from asking the right questions to presenting findings."
-         data-tags="Data Analysis,Process,General"
-         data-file="https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/PRACTICE/Blue%20and%20White%20Gradient%20Modern%20Project%20Presentation.pdf"
-         data-filename="Paired-Task-1.pdf">
-      <div class="task-thumb" style="background-image: url('https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/IMAGES/PAIREDTASK.png'); background-size: cover; background-position: center top;">
-        <span class="task-tag-badge badge-gen">Paired Task 1</span>
+    <!-- Card 1: Sales Analysis Complete (Power BI) — FIN04.png background -->
+    <div class="task-card" data-cat="powerbi"
+      data-badge="Finals Task 1"
+      data-title="Sales Analysis Dashboard (Power BI)"
+      data-imgurl="https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/IMAGES/FIN04.png"
+      data-thumbclass="thumb-cream"
+      data-icon='<path d="M18 20V10M12 20V4M6 20v-6"/>'
+      data-iconlabel="Power BI"
+      data-desc="A complete sales analysis dashboard built in Power BI. Visualizes key sales metrics, trends, and performance indicators using interactive reports and charts."
+      data-tags="Power BI,Dashboard,Sales Analysis,Visualization"
+      data-download="https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/FINALS/04-Sales_Analysis_complete%20(1).pbix"
+      data-filename="Finals-Sales-Analysis-Complete.pbix">
+      <div class="task-thumb img-thumb" style="background-image: url('https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/IMAGES/FIN04.png');">
+        <span class="task-tag-badge">Finals Task 4</span>
       </div>
       <div class="task-body">
-        <div class="task-title">The Data Analysis Process</div>
-        <p class="task-desc">A presentation exploring the end-to-end data analysis process from asking the right questions to presenting findings.</p>
-        <div class="task-tags"><span class="task-tag">Data Analysis</span><span class="task-tag">Process</span><span class="task-tag">General</span></div>
+        <div class="task-title">Designing Interactive Reports</div>
+        <p class="task-desc">Complete sales analysis dashboard built in Power BI with interactive reports, key metrics, and trend visualizations.</p>
+        <div class="task-tags"><span class="task-tag">Power BI</span><span class="task-tag">Dashboard</span><span class="task-tag">Sales Analysis</span></div>
       </div>
       <div class="task-footer">
-        <div style="display:flex;align-items:center;gap:0.4rem;"><div class="task-dot"></div><span style="font-size:0.72rem;color:var(--muted);">Paired Task 1</span></div>
-        <a href="#" class="view-details-btn" onclick="openModal(this);return false;">View Details &rarr;</a>
+        <div style="display:flex;align-items:center;gap:0.4rem;"><div class="task-dot"></div><span style="font-size:0.72rem;color:var(--muted);">Finals Task 1</span></div>
+        <button class="open-modal-btn">View Details &rarr;</button>
       </div>
     </div>
 
-    <!-- Practice Task 1 — PRAC1.png background -->
-    <div class="task-card" data-cat="excel"
-         data-thumb="thumb-blush"
-         data-imgurl="https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/IMAGES/PRAC1.png"
-         data-icon="<rect x=&quot;3&quot; y=&quot;3&quot; width=&quot;18&quot; height=&quot;18&quot; rx=&quot;2&quot;/><path d=&quot;M3 9h18M9 21V9&quot;/>"
-         data-badge="Practice Task 1"
-         data-title="Sales Revenue Dataset"
-         data-course="Data Analytics &middot; Practice Task 1"
-         data-desc="Worked with a sales revenue dataset to practice organizing and analyzing numerical data using Excel."
-         data-tags="Excel,Dataset,Sales Data"
-         data-file="https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/PRACTICE/CAPITLY_MARIELLA_M.xlsx"
-         data-filename="Practice-Task-1.xlsx">
-      <div class="task-thumb img-thumb" style="background-image: url('https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/IMAGES/PRAC1.png');">
-        <span class="task-tag-badge badge-excel">Practice Task 1</span>
+    <!-- Card 2: Essay — FINESSAY.png background -->
+    <div class="task-card" data-cat="essay"
+      data-badge="Finals Task 2"
+      data-title="Data Analytics Essay"
+      data-imgurl="https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/IMAGES/FINESSAY.png"
+      data-thumbclass="thumb-blush"
+      data-icon='<path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>'
+      data-iconlabel="Essay / PDF"
+      data-desc="A written essay on data analytics concepts, reflecting on the tools, techniques, and insights gained throughout the course. Submitted as a formal academic document."
+      data-tags="Essay,PDF,Academic Writing,Reflection"
+      data-download="https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/FINALS/Capitly_Mariella_ESSAY%20(1).pdf"
+      data-filename="Capitly_Mariella_ESSAY.pdf">
+      <div class="task-thumb img-thumb" style="background-image: url('https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/IMAGES/FINESSAY.png');">
+        <span class="task-tag-badge">Finals Essay 1</span>
       </div>
       <div class="task-body">
-        <div class="task-title">Sales Revenue Dataset</div>
-        <p class="task-desc">Worked with a sales revenue dataset to practice organizing and analyzing numerical data using Excel.</p>
-        <div class="task-tags"><span class="task-tag">Excel</span><span class="task-tag">Dataset</span><span class="task-tag">Sales Data</span></div>
+        <div class="task-title">Data Analytics Essay</div>
+        <p class="task-desc">A written academic essay reflecting on data analytics concepts, tools, and techniques studied throughout the course.</p>
+        <div class="task-tags"><span class="task-tag">Essay</span><span class="task-tag">PDF</span><span class="task-tag">Academic Writing</span></div>
       </div>
       <div class="task-footer">
-        <div style="display:flex;align-items:center;gap:0.4rem;"><div class="task-dot"></div><span style="font-size:0.72rem;color:var(--muted);">Practice Task 1</span></div>
-        <a href="#" class="view-details-btn" onclick="openModal(this);return false;">View Details &rarr;</a>
+        <div style="display:flex;align-items:center;gap:0.4rem;"><div class="task-dot"></div><span style="font-size:0.72rem;color:var(--muted);">Finals Task 2</span></div>
+        <button class="open-modal-btn">View Details &rarr;</button>
       </div>
     </div>
 
-    <!-- Practice Task 2 — PRAC2.png background -->
-    <div class="task-card" data-cat="excel visualization"
-         data-thumb="thumb-rose"
-         data-imgurl="https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/IMAGES/PRAC2.png"
-         data-icon="<path d=&quot;M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z&quot;/>"
-         data-badge="Practice Task 2"
-         data-title="Sales Dashboard"
-         data-course="Data Analytics &middot; Practice Task 2"
-         data-desc="Built a sales dashboard in Excel using charts, pivot tables, and formatting to summarize sales performance."
-         data-tags="Excel,Dashboard,Visualization"
-         data-file="https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/PRACTICE/MARIELLA_CAPITLY.xlsx"
-         data-filename="Practice-Task-2.xlsx">
-      <div class="task-thumb img-thumb" style="background-image: url('https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/IMAGES/PRAC2.png');">
-        <span class="task-tag-badge badge-viz">Practice Task 2</span>
+    <!-- Card 3: Sales Analysis Report (alternate .pbix) — FINSALES.png background -->
+    <div class="task-card" data-cat="powerbi"
+      data-badge="Finals Task 3"
+      data-title="Sales Analysis Report (Power BI)"
+      data-imgurl="https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/IMAGES/FINSALES.png"
+      data-thumbclass="thumb-rose"
+      data-icon='<rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>'
+      data-iconlabel="Power BI"
+      data-desc="An alternate Power BI report file for the sales analysis project. Contains report pages, data model connections, and visual analytics for sales performance review."
+      data-tags="Power BI,Report,Sales Data,Visualization"
+      data-download="https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/FINALS/Sales_Analysis_complete%20(1).pbix"
+      data-filename="Finals-Sales-Analysis-Report.pbix">
+      <div class="task-thumb img-thumb" style="background-image: url('https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/IMAGES/FINSALES.png');">
+        <span class="task-tag-badge">Finals Task 3</span>
       </div>
       <div class="task-body">
-        <div class="task-title">Sales Dashboard</div>
-        <p class="task-desc">Built a sales dashboard in Excel using charts, pivot tables, and formatting to summarize sales performance.</p>
-        <div class="task-tags"><span class="task-tag">Excel</span><span class="task-tag">Dashboard</span><span class="task-tag">Visualization</span></div>
+        <div class="task-title">Time Intelligence Function in Power BI</div>
+        <p class="task-desc">Power BI report with data model and visual analytics summarizing sales performance across categories and time periods.</p>
+        <div class="task-tags"><span class="task-tag">Power BI</span><span class="task-tag">Report</span><span class="task-tag">Sales Data</span></div>
       </div>
       <div class="task-footer">
-        <div style="display:flex;align-items:center;gap:0.4rem;"><div class="task-dot"></div><span style="font-size:0.72rem;color:var(--muted);">Practice Task 2</span></div>
-        <a href="#" class="view-details-btn" onclick="openModal(this);return false;">View Details &rarr;</a>
+        <div style="display:flex;align-items:center;gap:0.4rem;"><div class="task-dot"></div><span style="font-size:0.72rem;color:var(--muted);">Finals Task 3</span></div>
+        <button class="open-modal-btn">View Details &rarr;</button>
       </div>
     </div>
 
-    <!-- Power Query — PRAC3.png background -->
-    <div class="task-card" data-cat="query"
-         data-thumb="thumb-deep"
-         data-imgurl="https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/IMAGES/PRAC3.png"
-         data-icon="<ellipse cx=&quot;12&quot; cy=&quot;5&quot; rx=&quot;9&quot; ry=&quot;3&quot;/><path d=&quot;M21 12c0 1.66-4 3-9 3s-9-1.34-9-3&quot;/><path d=&quot;M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5&quot;/>"
-         data-badge="Power Query"
-         data-title="Power Query"
-         data-course="Data Analytics &middot; Power Query"
-         data-desc="Used Power Query to import, transform, and load data. Practiced automating data prep steps like removing duplicates and merging tables."
-         data-tags="Power Query,Data Prep,Excel"
-         data-file="https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/PRACTICE/CAPITLY_student_data.xlsx"
-         data-filename="Power-Query.xlsx">
-      <div class="task-thumb img-thumb" style="background-image: url('https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/IMAGES/PRAC3.png');">
-        <span class="task-tag-badge badge-query">Power Query</span>
-      </div>
-      <div class="task-body">
-        <div class="task-title">Power Query</div>
-        <p class="task-desc">Used Power Query to import, transform, and load data. Practiced automating data prep steps like removing duplicates and merging tables.</p>
-        <div class="task-tags"><span class="task-tag">Power Query</span><span class="task-tag">Data Prep</span><span class="task-tag">Excel</span></div>
-      </div>
-      <div class="task-footer">
-        <div style="display:flex;align-items:center;gap:0.4rem;"><div class="task-dot"></div><span style="font-size:0.72rem;color:var(--muted);">Power Query</span></div>
-        <a href="#" class="view-details-btn" onclick="openModal(this);return false;">View Details &rarr;</a>
-      </div>
-    </div>
-
-    <!-- Cleaned Shipments SQL — FINSHIP.png background -->
+    <!-- Card 4: SQL Project — FINPROJ.png background -->
     <div class="task-card" data-cat="sql"
-         data-thumb="thumb-mauve"
-         data-imgurl="https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/IMAGES/FINSHIP.png"
-         data-icon="<polyline points=&quot;20 6 9 17 4 12&quot;/>"
-         data-badge="SQL Task"
-         data-title="Cleaned Shipments SQL Script"
-         data-course="Data Analytics &middot; SQL Task"
-         data-desc="A SQL script containing the cleaned and transformed version of the dirty shipments dataset. Reflects the full data cleaning pipeline applied through SQL statements."
-         data-tags="SQL,Data Cleaning,Shipments,ETL"
-         data-file="https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/FINALS/shipment_cleaned.sql"
-         data-filename="shipment_cleaned.sql">
-      <div class="task-thumb img-thumb" style="background-image: url('https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/IMAGES/FINSHIP.png');">
-        <span class="task-tag-badge badge-sql">FINAL- PRACTICE TASK 1</span>
+      data-badge="Finals Task 6"
+      data-title="SQL Project — Data Queries"
+      data-imgurl="https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/IMAGES/FINPROJ.png"
+      data-thumbclass="thumb-sand"
+      data-icon='<path d="M4 6h16M4 12h16M4 18h7"/><circle cx="17" cy="18" r="3"/><path d="m21 21-1.5-1.5"/>'
+      data-iconlabel="SQL"
+      data-desc="A SQL project file containing queries written to extract, filter, aggregate, and analyze data. Demonstrates ability to write structured queries for real-world data problems."
+      data-tags="SQL,Queries,Database,Data Analysis"
+      data-download="https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/FINALS/project_capitly%20(1).sql"
+      data-filename="project_capitly.sql">
+      <div class="task-thumb img-thumb" style="background-image: url('https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/IMAGES/FINPROJ.png');">
+        <span class="task-tag-badge">Finals Task 1</span>
       </div>
       <div class="task-body">
-        <div class="task-title">Data Preparations using SQL</div>
-        <p class="task-desc">SQL script reflecting the complete data cleaning pipeline applied to the dirty shipments dataset — transforming raw data into a structured, usable format.</p>
-        <div class="task-tags"><span class="task-tag">SQL</span><span class="task-tag">Data Cleaning</span><span class="task-tag">ETL</span></div>
+        <div class="task-title">Data Preparation and Analysis using SQL</div>
+        <p class="task-desc">SQL queries written to extract, filter, aggregate, and analyze data — demonstrating structured querying skills on real-world datasets.</p>
+        <div class="task-tags"><span class="task-tag">SQL</span><span class="task-tag">Queries</span><span class="task-tag">Database</span></div>
       </div>
       <div class="task-footer">
-        <div style="display:flex;align-items:center;gap:0.4rem;"><div class="task-dot"></div><span style="font-size:0.72rem;color:var(--muted);">SQL Task</span></div>
-        <a href="#" class="view-details-btn" onclick="openModal(this);return false;">View Details &rarr;</a>
+        <div style="display:flex;align-items:center;gap:0.4rem;"><div class="task-dot"></div><span style="font-size:0.72rem;color:var(--muted);">Finals Task 6</span></div>
+        <button class="open-modal-btn">View Details &rarr;</button>
       </div>
     </div>
 
-  </div>
-</div>
+  </div><!-- /tasks-grid -->
+</div><!-- /page-wrap -->
+
 <footer>
-  Made with <span>&#9829;</span> by <span>Mariella &ldquo;Ella&rdquo; Capitly</span> &middot; BS Computer Science &middot; City College of Angeles &middot; 2025
+  Made with <span>&#9829;</span> by <span>Mariella &ldquo;Ella&rdquo; Capitly</span> &middot; BS Computer Science &middot; City College of Angeles &middot; 2026
 </footer>
 
 <script>
@@ -362,95 +317,90 @@
       btn.classList.add('active');
       var cat = btn.getAttribute('data-filter');
       document.querySelectorAll('.task-card').forEach(function(card) {
-        card.classList.toggle('hidden', cat !== 'all' && card.getAttribute('data-cat').indexOf(cat) === -1);
+        if (cat === 'all' || card.getAttribute('data-cat').indexOf(cat) !== -1) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
       });
     });
   });
 
-  var overlay = document.getElementById('modalOverlay');
-  var currentFileUrl = '';
+  var overlay         = document.getElementById('modalOverlay');
+  var mBadge          = document.getElementById('modalBadge');
+  var mTitle          = document.getElementById('modalTitle');
+  var mDesc           = document.getElementById('modalDesc');
+  var mTags           = document.getElementById('modalTags');
+  var mHeaderImg      = document.getElementById('modalHeaderImg');
+  var mHeaderIcon     = document.getElementById('modalHeaderIcon');
+  var currentFileUrl  = '';
   var currentFileName = '';
 
-  function openModal(el) {
-    var c = el.closest('.task-card');
-    var imgUrl = c.dataset.imgurl || '';
-    var mThumb = document.getElementById('mThumb');
+  document.querySelectorAll('.open-modal-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var card    = btn.closest('.task-card');
+      var imgUrl  = card.getAttribute('data-imgurl') || '';
+      var tClass  = card.getAttribute('data-thumbclass') || 'thumb-cream';
+      var iconSvg = card.getAttribute('data-icon') || '';
+      var iconLbl = card.getAttribute('data-iconlabel') || '';
 
-    if (imgUrl) {
-      mThumb.className = 'modal-thumb';
-      mThumb.style.backgroundImage = "url('" + imgUrl + "')";
-      document.getElementById('mIcon').style.display = 'none';
-    } else {
-      mThumb.className = 'modal-thumb ' + (c.dataset.thumb || 'thumb-cream');
-      mThumb.style.backgroundImage = '';
-      document.getElementById('mIcon').style.display = '';
-      document.getElementById('mIcon').innerHTML = c.dataset.icon || '';
-    }
+      mHeaderImg.style.backgroundImage = imgUrl ? "url('" + imgUrl + "')" : '';
+      mHeaderImg.className = 'modal-header-img ' + (imgUrl ? '' : tClass);
 
-    document.getElementById('mBadge').textContent = c.dataset.badge || '';
-    document.getElementById('mTitle').textContent = c.dataset.title || '';
-    document.getElementById('mCourse').textContent = c.dataset.course || '';
-    document.getElementById('mDesc').textContent = c.dataset.desc || '';
-    var tagsEl = document.getElementById('mTags');
-    tagsEl.innerHTML = '';
-    (c.dataset.tags || '').split(',').forEach(function(t) {
-      if (!t.trim()) return;
-      var s = document.createElement('span');
-      s.className = 'modal-tag';
-      s.textContent = t.trim();
-      tagsEl.appendChild(s);
+      if (imgUrl) {
+        mHeaderIcon.innerHTML = '';
+      } else {
+        mHeaderIcon.innerHTML =
+          '<svg viewBox="0 0 24 24" style="width:52px;height:52px;stroke:var(--crimson);fill:none;opacity:0.25;stroke-width:1.2;">' + iconSvg + '</svg>' +
+          '<span style="font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);opacity:0.7;margin-top:0.4rem;">' + iconLbl + '</span>';
+      }
+
+      mBadge.textContent = card.getAttribute('data-badge') || '';
+      mTitle.textContent = card.getAttribute('data-title') || '';
+      mDesc.textContent  = card.getAttribute('data-desc')  || '';
+
+      mTags.innerHTML = '';
+      (card.getAttribute('data-tags') || '').split(',').forEach(function(t) {
+        var s = document.createElement('span');
+        s.className = 'modal-tag';
+        s.textContent = t.trim();
+        mTags.appendChild(s);
+      });
+
+      currentFileUrl  = card.getAttribute('data-download') || '';
+      currentFileName = card.getAttribute('data-filename') || 'download';
+
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
     });
+  });
 
-    currentFileUrl  = c.dataset.file || '';
-    currentFileName = c.dataset.filename || 'download';
-
-    var dlBtn  = document.getElementById('mDownload');
-    var noFile = document.getElementById('mNoFile');
-    if (currentFileUrl && currentFileUrl !== '#') {
-      dlBtn.style.display  = 'inline-flex';
-      noFile.style.display = 'none';
-    } else {
-      dlBtn.style.display  = 'none';
-      noFile.style.display = 'inline';
-    }
-    overlay.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-
-  document.getElementById('mDownload').addEventListener('click', function() {
+  document.getElementById('modalDownload').addEventListener('click', function() {
     if (!currentFileUrl) return;
     var btn = this;
-    var originalText = btn.innerHTML;
+    var orig = btn.innerHTML;
     btn.disabled = true;
     btn.innerHTML = '&#8987; Downloading...';
     fetch(currentFileUrl)
-      .then(function(response) {
-        if (!response.ok) throw new Error('Network response was not ok');
-        return response.blob();
+      .then(function(res) {
+        if (!res.ok) throw new Error('fetch failed');
+        return res.blob();
       })
       .then(function(blob) {
-        var blobUrl = URL.createObjectURL(blob);
         var a = document.createElement('a');
-        a.href = blobUrl;
+        a.href = URL.createObjectURL(blob);
         a.download = currentFileName;
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
-        setTimeout(function() { URL.revokeObjectURL(blobUrl); }, 1000);
+        URL.revokeObjectURL(a.href);
       })
       .catch(function() {
-        var a = document.createElement('a');
-        a.href = currentFileUrl;
-        a.download = currentFileName;
-        a.target = '_blank';
-        a.rel = 'noopener noreferrer';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
+        window.open(currentFileUrl, '_blank');
       })
       .finally(function() {
         btn.disabled = false;
-        btn.innerHTML = originalText;
+        btn.innerHTML = orig;
       });
   });
 
@@ -458,11 +408,10 @@
     overlay.classList.remove('open');
     document.body.style.overflow = '';
   }
-
-  document.getElementById('modalClose').addEventListener('click', closeModal);
+  document.getElementById('modalCloseX').addEventListener('click', closeModal);
+  document.getElementById('modalCloseBtn').addEventListener('click', closeModal);
   overlay.addEventListener('click', function(e) { if (e.target === overlay) closeModal(); });
   document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
 </script>
-
 </body>
 </html>

@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio - Mariella Capitly</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Playfair+Display:ital,wght@0,700;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .hero-right {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .photo-single-wrap {
+      position: relative;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 1.2rem;
+    }
+    .photo-single {
+      width: 260px;
+      height: 340px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(44,24,16,0.18);
+      border: 3px solid rgba(250,246,241,0.9);
+      flex-shrink: 0;
+      position: relative;
+    }
+    .photo-single img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+    }
+    .photo-side-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      margin-top: 1.5rem;
+    }
+    .photo-side-card {
+      width: 110px;
+      height: 78px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(44,24,16,0.13);
+      border: 2px solid rgba(250,246,241,0.85);
+    }
+    .photo-side-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+    }
+    .floating-tag {
+      position: absolute;
+      bottom: -18px;
+      left: 50%;
+      transform: translateX(-60%);
+      background: #fff;
+      border: 1px solid rgba(139,26,26,0.15);
+      border-radius: 12px;
+      padding: 0.55rem 1.1rem;
+      font-family: "Cormorant Garamond", serif;
+      font-style: italic;
+      font-size: 0.78rem;
+      color: var(--muted);
+      white-space: nowrap;
+      box-shadow: 0 4px 16px rgba(44,24,16,0.09);
+      z-index: 5;
+    }
+    .photo-card-main, .photo-card-2, .photo-card-3, .ribbon { display: none !important; }
+    /* Finals badge color */
+    .badge-finals { background: rgba(44,24,16,0.82) !important; color: #F5E6E0 !important; }
+    @media(max-width: 768px) {
+      .photo-single { width: 200px; height: 260px; }
+      .photo-side-stack { display: none; }
+      .floating-tag { font-size: 0.7rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Ella.</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-deco"></div>
+  <div class="hero-deco-2"></div>
+  <div class="hero-left fade-in">
+    <div class="hero-tag">Portfolio - Academic Year 2026</div>
+    <h1 class="hero-name">Mariella <em>Capitly</em></h1>
+    <p class="hero-subtitle">Ella &middot; BS Computer Science &middot; Data Analytics</p>
+    <p class="hero-bio">Hi, I am <strong>Ella</strong> &mdash; a BS Computer Science student at <strong>City College of Angeles</strong>. I am passionate about turning raw data into meaningful insight. This portfolio showcases my academic work in Data Analytics.</p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn-primary">View My Work</a>
+      <a href="#contact" class="btn-outline">Get in Touch</a>
+    </div>
+  </div>
+
+  <div class="hero-right fade-in">
+    <div class="photo-single-wrap">
+      <div class="photo-single">
+        <img src="https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/IMAGES/PROFILE.JPG" alt="Mariella Capitly">
+      </div>
+      <div class="floating-tag" style="color: black;">&ldquo;Learn, improve, and keep moving forward.&rdquo;</div>
+    </div>
+  </div>
+</section>
+
+<section class="section about" id="about">
+  <div class="fade-in">
+    <h2 class="section-title">A little bit<br>about <em>myself</em></h2>
+    <p class="section-desc">I am learning to work with data, build basic skills in organizing information and identifying patterns, and use tools like spreadsheets while exploring simple data analysis techniques.</p>
+    <p class="section-desc" style="margin-bottom:0;">I am still improving step by step, learning how to analyze data more effectively and present it in a clear and simple way. I am open to learning new skills and gaining more experience over time.</p>
+    <div class="about-stats">
+      <div class="stat-card"><div class="stat-number">3</div><div class="stat-label">Projects</div></div>
+      <div class="stat-card"><div class="stat-number">&#8734;</div><div class="stat-label">Ideas in Progress</div></div>
+      <div class="stat-card"><div class="stat-number">1</div><div class="stat-label">Academic Year</div></div>
+      <div class="stat-card"><div class="stat-number">13</div><div class="stat-label">Completed Tasks</div></div>
+    </div>
+  </div>
+  <div class="about-image-area fade-in">
+    <div class="about-card-big"></div>
+    <div class="about-card-small">
+      <div class="big-text">&#10022;</div>
+      <div class="big-text" style="font-size:1.1rem;margin-top:0.5rem;font-family:Cormorant Garamond,serif;font-style:italic;"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="projects">
+  <div class="fade-in">
+    <div class="section-label">Academic Work</div>
+    <h2 class="section-title">My <em>Projects</em></h2>
+    <p class="section-desc">Featured work from my requirements &mdash; each one a reflection of research, creativity, and dedication.</p>
+  </div>
+  <div class="divider"><span class="divider-icon">&#10022;</span></div>
+
+  <div class="projects-grid">
+
+    <!-- PRACTICE TASK CARD -->
+    <div class="project-card fade-in">
+      <div class="tape"></div>
+      <svg class="butterfly" viewBox="0 0 70 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M35 30 C28 22 10 14 6 20 C2 26 16 36 35 30Z" fill="#6B0F0F" opacity="0.9"/>
+        <path d="M35 30 C28 22 10 14 6 20 C2 26 16 36 35 30Z" fill="#E8A0A0" opacity="0.3"/>
+        <ellipse cx="10" cy="22" rx="4" ry="3" fill="#8B1A1A" opacity="0.7"/>
+        <path d="M35 30 C42 22 60 14 64 20 C68 26 54 36 35 30Z" fill="#6B0F0F" opacity="0.9"/>
+        <path d="M35 30 C42 22 60 14 64 20 C68 26 54 36 35 30Z" fill="#E8A0A0" opacity="0.3"/>
+        <ellipse cx="60" cy="22" rx="4" ry="3" fill="#8B1A1A" opacity="0.7"/>
+        <path d="M35 30 C30 36 16 44 18 50 C20 56 32 50 35 30Z" fill="#7B1111" opacity="0.85"/>
+        <path d="M35 30 C40 36 54 44 52 50 C50 56 38 50 35 30Z" fill="#7B1111" opacity="0.85"/>
+        <ellipse cx="35" cy="30" rx="2.5" ry="4" fill="#3A0606"/>
+        <path d="M34 27 C32 24 30 22" stroke="#3A0606" stroke-width="1" stroke-linecap="round" fill="none"/>
+        <path d="M36 27 C38 24 40 22" stroke="#3A0606" stroke-width="1" stroke-linecap="round" fill="none"/>
+      </svg>
+      <svg class="bouquet" viewBox="0 0 80 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M40 95 C38 80 36 65 34 50" stroke="#4A6B1A" stroke-width="2" stroke-linecap="round" fill="none"/>
+        <path d="M40 95 C42 80 44 65 46 50" stroke="#4A6B1A" stroke-width="2" stroke-linecap="round" fill="none"/>
+        <path d="M34 68 C28 60 22 55 26 50 C28 60 32 65 34 68Z" fill="#4A6B1A" opacity="0.8"/>
+        <path d="M46 65 C52 57 58 52 54 47 C52 57 48 62 46 65Z" fill="#4A6B1A" opacity="0.8"/>
+        <path d="M26 50 C26 38 31 28 34 22 C36 28 38 38 38 50 C36 52 32 53 30 53 C28 53 26 52 26 50Z" fill="#6B0F0F"/>
+        <path d="M42 50 C42 38 47 28 50 22 C52 28 54 38 54 50 C52 52 48 53 46 53 C44 53 42 52 42 50Z" fill="#6B0F0F"/>
+        <path d="M34 55 C34 43 38 32 40 26 C42 32 44 43 44 55 C42 57 38 58 36 58Z" fill="#7B1111"/>
+        <path d="M20 75 C26 70 34 68 40 68 C46 68 54 70 60 75 L56 85 C52 88 46 90 40 90 C34 90 28 88 24 85Z" fill="#C8A96E" opacity="0.85"/>
+      </svg>
+      <div class="project-thumb" style="
+        background-image: url('https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/IMAGES/DATA.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        position: relative;
+      ">
+        <span class="project-badge badge-mini" style="position:absolute;top:0.75rem;left:0.75rem;">Practice Task</span>
+      </div>
+      <div class="project-body">
+        <h3 class="project-title">Practice Task</h3>
+        <p class="project-desc">Hands-on exercises applying data analytics techniques. Built foundational skills in working with datasets, identifying trends, and presenting findings effectively.</p>
+        <div class="project-tags">
+          <span class="tag">Practice</span>
+          <span class="tag">Exercises</span>
+          <span class="tag">Skills</span>
+        </div>
+      </div>
+      <div class="project-footer">
+        <div class="project-score"><div class="score-dot"></div></div>
+        <a href="practice.html" class="view-btn">View Project &rarr;</a>
+      </div>
+      <div class="polaroid-date">April 2026</div>
+    </div>
+
+    <!-- MIDTERM TASK CARD -->
+    <div class="project-card fade-in">
+      <div class="tape"></div>
+      <svg class="butterfly" viewBox="0 0 70 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M35 30 C28 22 10 14 6 20 C2 26 16 36 35 30Z" fill="#6B0F0F" opacity="0.9"/>
+        <path d="M35 30 C28 22 10 14 6 20 C2 26 16 36 35 30Z" fill="#E8A0A0" opacity="0.3"/>
+        <ellipse cx="10" cy="22" rx="4" ry="3" fill="#8B1A1A" opacity="0.7"/>
+        <path d="M35 30 C42 22 60 14 64 20 C68 26 54 36 35 30Z" fill="#6B0F0F" opacity="0.9"/>
+        <path d="M35 30 C42 22 60 14 64 20 C68 26 54 36 35 30Z" fill="#E8A0A0" opacity="0.3"/>
+        <ellipse cx="60" cy="22" rx="4" ry="3" fill="#8B1A1A" opacity="0.7"/>
+        <path d="M35 30 C30 36 16 44 18 50 C20 56 32 50 35 30Z" fill="#7B1111" opacity="0.85"/>
+        <path d="M35 30 C40 36 54 44 52 50 C50 56 38 50 35 30Z" fill="#7B1111" opacity="0.85"/>
+        <ellipse cx="35" cy="30" rx="2.5" ry="4" fill="#3A0606"/>
+        <path d="M34 27 C32 24 30 22" stroke="#3A0606" stroke-width="1" stroke-linecap="round" fill="none"/>
+        <path d="M36 27 C38 24 40 22" stroke="#3A0606" stroke-width="1" stroke-linecap="round" fill="none"/>
+      </svg>
+      <svg class="bouquet" viewBox="0 0 80 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M40 95 C38 80 36 65 34 50" stroke="#4A6B1A" stroke-width="2" stroke-linecap="round" fill="none"/>
+        <path d="M40 95 C42 80 44 65 46 50" stroke="#4A6B1A" stroke-width="2" stroke-linecap="round" fill="none"/>
+        <path d="M34 68 C28 60 22 55 26 50 C28 60 32 65 34 68Z" fill="#4A6B1A" opacity="0.8"/>
+        <path d="M46 65 C52 57 58 52 54 47 C52 57 48 62 46 65Z" fill="#4A6B1A" opacity="0.8"/>
+        <path d="M26 50 C26 38 31 28 34 22 C36 28 38 38 38 50 C36 52 32 53 30 53 C28 53 26 52 26 50Z" fill="#6B0F0F"/>
+        <path d="M42 50 C42 38 47 28 50 22 C52 28 54 38 54 50 C52 52 48 53 46 53 C44 53 42 52 42 50Z" fill="#6B0F0F"/>
+        <path d="M34 55 C34 43 38 32 40 26 C42 32 44 43 44 55 C42 57 38 58 36 58Z" fill="#7B1111"/>
+        <path d="M20 75 C26 70 34 68 40 68 C46 68 54 70 60 75 L56 85 C52 88 46 90 40 90 C34 90 28 88 24 85Z" fill="#C8A96E" opacity="0.85"/>
+      </svg>
+      <div class="project-thumb" style="
+        background-image: url('https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/IMAGES/DATA.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        position: relative;
+      ">
+        <span class="project-badge badge-midterm" style="position:absolute;top:0.75rem;left:0.75rem;">Midterm Task</span>
+      </div>
+      <div class="project-body">
+        <h3 class="project-title">Midterm Task</h3>
+        <p class="project-desc">A midterm project that shows my understanding of basic data analytics, including organizing, analyzing, and presenting data in a clear and useful way.</p>
+        <div class="project-tags">
+          <span class="tag">Task</span>
+          <span class="tag">Analytics</span>
+          <span class="tag">Structured</span>
+        </div>
+      </div>
+      <div class="project-footer">
+        <div class="project-score"><div class="score-dot"></div></div>
+        <a href="midterm.html" class="view-btn">View Project &rarr;</a>
+      </div>
+      <div class="polaroid-date">April 2026</div>
+    </div>
+
+    <!-- FINALS TASK CARD -->
+    <div class="project-card fade-in">
+      <div class="tape"></div>
+      <svg class="butterfly" viewBox="0 0 70 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M35 30 C28 22 10 14 6 20 C2 26 16 36 35 30Z" fill="#6B0F0F" opacity="0.9"/>
+        <path d="M35 30 C28 22 10 14 6 20 C2 26 16 36 35 30Z" fill="#E8A0A0" opacity="0.3"/>
+        <ellipse cx="10" cy="22" rx="4" ry="3" fill="#8B1A1A" opacity="0.7"/>
+        <path d="M35 30 C42 22 60 14 64 20 C68 26 54 36 35 30Z" fill="#6B0F0F" opacity="0.9"/>
+        <path d="M35 30 C42 22 60 14 64 20 C68 26 54 36 35 30Z" fill="#E8A0A0" opacity="0.3"/>
+        <ellipse cx="60" cy="22" rx="4" ry="3" fill="#8B1A1A" opacity="0.7"/>
+        <path d="M35 30 C30 36 16 44 18 50 C20 56 32 50 35 30Z" fill="#7B1111" opacity="0.85"/>
+        <path d="M35 30 C40 36 54 44 52 50 C50 56 38 50 35 30Z" fill="#7B1111" opacity="0.85"/>
+        <ellipse cx="35" cy="30" rx="2.5" ry="4" fill="#3A0606"/>
+        <path d="M34 27 C32 24 30 22" stroke="#3A0606" stroke-width="1" stroke-linecap="round" fill="none"/>
+        <path d="M36 27 C38 24 40 22" stroke="#3A0606" stroke-width="1" stroke-linecap="round" fill="none"/>
+      </svg>
+      <svg class="bouquet" viewBox="0 0 80 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M40 95 C38 80 36 65 34 50" stroke="#4A6B1A" stroke-width="2" stroke-linecap="round" fill="none"/>
+        <path d="M40 95 C42 80 44 65 46 50" stroke="#4A6B1A" stroke-width="2" stroke-linecap="round" fill="none"/>
+        <path d="M34 68 C28 60 22 55 26 50 C28 60 32 65 34 68Z" fill="#4A6B1A" opacity="0.8"/>
+        <path d="M46 65 C52 57 58 52 54 47 C52 57 48 62 46 65Z" fill="#4A6B1A" opacity="0.8"/>
+        <path d="M26 50 C26 38 31 28 34 22 C36 28 38 38 38 50 C36 52 32 53 30 53 C28 53 26 52 26 50Z" fill="#6B0F0F"/>
+        <path d="M42 50 C42 38 47 28 50 22 C52 28 54 38 54 50 C52 52 48 53 46 53 C44 53 42 52 42 50Z" fill="#6B0F0F"/>
+        <path d="M34 55 C34 43 38 32 40 26 C42 32 44 43 44 55 C42 57 38 58 36 58Z" fill="#7B1111"/>
+        <path d="M20 75 C26 70 34 68 40 68 C46 68 54 70 60 75 L56 85 C52 88 46 90 40 90 C34 90 28 88 24 85Z" fill="#C8A96E" opacity="0.85"/>
+      </svg>
+      <div class="project-thumb" style="
+        background-image: url('https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/IMAGES/DATA.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        position: relative;
+      ">
+        <span class="project-badge badge-finals" style="position:absolute;top:0.75rem;left:0.75rem;">Finals Task</span>
+      </div>
+      <div class="project-body">
+        <h3 class="project-title">Finals Task</h3>
+        <p class="project-desc">Final course requirements covering Power BI dashboards, SQL data querying, CSV dataset analysis, and an academic essay &mdash; the culmination of my Data Analytics journey.</p>
+        <div class="project-tags">
+          <span class="tag">Power BI</span>
+          <span class="tag">SQL</span>
+          <span class="tag">Analytics</span>
+        </div>
+      </div>
+      <div class="project-footer">
+        <div class="project-score"><div class="score-dot"></div></div>
+        <a href="finals.html" class="view-btn">View Project &rarr;</a>
+      </div>
+      <div class="polaroid-date">May 2026</div>
+    </div>
+
+  </div>
+</section>
+
+<section class="section skills-section" id="skills">
+  <div class="fade-in">
+    <div class="section-label">What I Know</div>
+    <h2 class="section-title">Skills &amp; <em>Tools</em></h2>
+    <p class="section-desc">Technologies, tools, and skills I have developed through coursework and self-study.</p>
+  </div>
+  <div class="skills-grid fade-in">
+    <div class="skill-pill"><div class="skill-dot"></div><span class="skill-name">Canva</span></div>
+    <div class="skill-pill"><div class="skill-dot"></div><span class="skill-name">Figma</span></div>
+    <div class="skill-pill"><div class="skill-dot"></div><span class="skill-name">MS Word</span></div>
+    <div class="skill-pill"><div class="skill-dot"></div><span class="skill-name">Power BI</span></div>
+    <div class="skill-pill"><div class="skill-dot"></div><span class="skill-name">SQL</span></div>
+    <div class="skill-pill"><div class="skill-dot"></div><span class="skill-name">Problem Solving</span></div>
+    <div class="skill-pill"><div class="skill-dot"></div><span class="skill-name">Design Thinking</span></div>
+  </div>
+</section>
+
+<section class="section contact" id="contact">
+  <div class="fade-in">
+    <div class="section-label">Say Hello</div>
+    <h2 class="section-title">Let&#39;s <em>Connect</em></h2>
+    <p class="section-desc">Whether it&#39;s feedback on my work, a collaboration, or just a friendly hello &mdash; I&#39;d love to hear from you.</p>
+    <div class="contact-links">
+      <a href="mailto:mariellacapitly27&#64;gmail.com" class="btn-primary">&#9993; mariellacapitly27&#64;gmail.com</a>
+      <a href="tel:09752881508" class="btn-outline">&#128241; 09752881508</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Made <span>&#9829;</span> by <span>Mariella &ldquo;Ella&rdquo; Capitly</span> &middot; BS Computer Science &middot; City College of Angeles &middot; 2026
+</footer>
+
+<script>
+  document.querySelectorAll('.hero .fade-in').forEach(function(el) { el.classList.add('visible'); });
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry, i) {
+      if (entry.isIntersecting) {
+        setTimeout(function() { entry.target.classList.add('visible'); }, i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.section .fade-in').forEach(function(el) { observer.observe(el); });
+</script>
+
+</body>
+</html>

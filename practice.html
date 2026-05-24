@@ -34,7 +34,7 @@
       position: relative;
       overflow: hidden;
     }
-    /* Image thumbnail — just the image, nothing on top */
+    /* Image thumbnail */
     .task-thumb.img-thumb {
       background-size: cover;
       background-position: center top;
@@ -45,8 +45,9 @@
     .thumb-blush { background: linear-gradient(135deg,#EAD5CC,#F0E8DF); }
     .thumb-rose  { background: linear-gradient(135deg,#EDD0C5,#D4A5A5); }
     .thumb-deep  { background: linear-gradient(135deg,#C8A0A0,#D4A5A5); }
+    .thumb-mauve { background: linear-gradient(135deg,#D4B0C0,#C0A0B0); }
 
-    /* Badge pill — shown on image cards */
+    /* Badge pill */
     .task-tag-badge {
       position: absolute;
       top: 0.75rem;
@@ -63,6 +64,7 @@
     .badge-query { background: rgba(250,246,241,0.9); color: var(--crimson); }
     .badge-viz   { background: rgba(250,246,241,0.9); color: var(--crimson); }
     .badge-gen   { background: rgba(139,26,26,0.08); color: var(--crimson); }
+    .badge-sql   { background: rgba(250,246,241,0.9); color: var(--crimson); }
 
     /* Fallback placeholder — only for gradient cards */
     .task-thumb-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.6rem; }
@@ -212,11 +214,12 @@
       <button class="filter-btn" data-filter="excel">Excel</button>
       <button class="filter-btn" data-filter="visualization">Visualization</button>
       <button class="filter-btn" data-filter="query">Power Query</button>
+      <button class="filter-btn" data-filter="sql">SQL</button>
     </div>
   </div>
   <div class="tasks-grid">
 
-    <!-- Paired Task 1 — already has image, keep as-is -->
+    <!-- Paired Task 1 -->
     <div class="task-card" data-cat="general"
          data-thumb="thumb-cream"
          data-imgurl=""
@@ -320,6 +323,32 @@
       </div>
     </div>
 
+    <!-- Cleaned Shipments SQL — FINSHIP.png background -->
+    <div class="task-card" data-cat="sql"
+         data-thumb="thumb-mauve"
+         data-imgurl="https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/IMAGES/FINSHIP.png"
+         data-icon="<polyline points=&quot;20 6 9 17 4 12&quot;/>"
+         data-badge="SQL Task"
+         data-title="Cleaned Shipments SQL Script"
+         data-course="Data Analytics &middot; SQL Task"
+         data-desc="A SQL script containing the cleaned and transformed version of the dirty shipments dataset. Reflects the full data cleaning pipeline applied through SQL statements."
+         data-tags="SQL,Data Cleaning,Shipments,ETL"
+         data-file="https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/FINALS/shipment_cleaned.sql"
+         data-filename="shipment_cleaned.sql">
+      <div class="task-thumb img-thumb" style="background-image: url('https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/IMAGES/FINSHIP.png');">
+        <span class="task-tag-badge badge-sql">FINAL- PRACTICE TASK 1</span>
+      </div>
+      <div class="task-body">
+        <div class="task-title">Data Preparations using SQL</div>
+        <p class="task-desc">SQL script reflecting the complete data cleaning pipeline applied to the dirty shipments dataset — transforming raw data into a structured, usable format.</p>
+        <div class="task-tags"><span class="task-tag">SQL</span><span class="task-tag">Data Cleaning</span><span class="task-tag">ETL</span></div>
+      </div>
+      <div class="task-footer">
+        <div style="display:flex;align-items:center;gap:0.4rem;"><div class="task-dot"></div><span style="font-size:0.72rem;color:var(--muted);">SQL Task</span></div>
+        <a href="#" class="view-details-btn" onclick="openModal(this);return false;">View Details &rarr;</a>
+      </div>
+    </div>
+
   </div>
 </div>
 <footer>
@@ -347,7 +376,6 @@
     var imgUrl = c.dataset.imgurl || '';
     var mThumb = document.getElementById('mThumb');
 
-    // Set thumb background: image if available, else gradient class
     if (imgUrl) {
       mThumb.className = 'modal-thumb';
       mThumb.style.backgroundImage = "url('" + imgUrl + "')";
@@ -389,7 +417,6 @@
     document.body.style.overflow = 'hidden';
   }
 
-  /* ── FORCE DOWNLOAD via fetch + Blob ── */
   document.getElementById('mDownload').addEventListener('click', function() {
     if (!currentFileUrl) return;
     var btn = this;
@@ -411,7 +438,7 @@
         document.body.removeChild(a);
         setTimeout(function() { URL.revokeObjectURL(blobUrl); }, 1000);
       })
-      .catch(function(err) {
+      .catch(function() {
         var a = document.createElement('a');
         a.href = currentFileUrl;
         a.download = currentFileName;

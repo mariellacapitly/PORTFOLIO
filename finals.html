@@ -59,7 +59,6 @@
       color: var(--crimson);
     }
 
-    /* Placeholder icon inside gradient thumbs */
     .thumb-icon-wrap { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
     .thumb-icon-wrap svg { width: 38px; height: 38px; stroke: var(--crimson); fill: none; opacity: 0.3; stroke-width: 1.5; }
     .thumb-icon-label { font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); opacity: 0.7; }
@@ -74,13 +73,11 @@
     .task-footer button:hover { gap: 0.6rem; }
     .task-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--crimson); flex-shrink: 0; }
 
-    /* Decorations */
     .deco-bow { position: fixed; top: 90px; right: -8px; width: 65px; height: 105px; pointer-events: none; z-index: 5; opacity: 0.8; }
     .deco-butterfly { position: fixed; bottom: 120px; left: 10px; width: 60px; height: 50px; pointer-events: none; z-index: 5; opacity: 0.75; transform: rotate(8deg); }
     .deco-bouquet { position: fixed; bottom: 30px; right: 8px; width: 72px; height: 90px; pointer-events: none; z-index: 5; opacity: 0.8; }
     @media(max-width:600px){ .deco-bow,.deco-butterfly,.deco-bouquet{display:none;} .tasks-grid{grid-template-columns:1fr;} .modal-actions{flex-direction:column;} }
 
-    /* Modal */
     .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(44,24,16,0.5); z-index: 200; align-items: center; justify-content: center; padding: 1.5rem; backdrop-filter: blur(6px); }
     .modal-overlay.open { display: flex; }
     .modal-box { background: #FAF6F1; border-radius: 20px; max-width: 580px; width: 100%; max-height: 90vh; overflow-y: auto; box-shadow: 0 24px 80px rgba(44,24,16,0.25); border: 1px solid rgba(139,26,26,0.12); position: relative; animation: modalIn 0.3s ease; }
@@ -129,7 +126,6 @@
   </ul>
 </nav>
 
-<!-- Decorations -->
 <svg class="deco-bow" viewBox="0 0 70 110" fill="none">
   <path d="M33 22 C26 15 6 8 8 2 C10 -1 22 6 33 22Z" fill="#6B0F0F" opacity="0.95"/>
   <path d="M33 22 C26 15 6 8 8 2 C10 -1 22 6 33 22Z" fill="#D47070" opacity="0.3"/>
@@ -203,11 +199,11 @@
 
   <div class="tasks-grid">
 
-    <!-- Card 1: Sales Analysis (Power BI) — complete with charts -->
+    <!-- Card 1: Sales Analysis Complete (Power BI) — FIN04.png background -->
     <div class="task-card" data-cat="powerbi"
-      data-badge="Finals Task 1"
-      data-title="Sales Analysis Dashboard (Power BI)"
-      data-imgurl=""
+      data-badge="Finals Task 4"
+      data-title="Designing Interactive Reports"
+      data-imgurl="https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/IMAGES/FIN04.png"
       data-thumbclass="thumb-cream"
       data-icon='<path d="M18 20V10M12 20V4M6 20v-6"/>'
       data-iconlabel="Power BI"
@@ -215,15 +211,11 @@
       data-tags="Power BI,Dashboard,Sales Analysis,Visualization"
       data-download="https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/FINALS/04-Sales_Analysis_complete%20(1).pbix"
       data-filename="Finals-Sales-Analysis-Complete.pbix">
-      <div class="task-thumb thumb-cream">
-        <span class="task-tag-badge">Finals Task 1</span>
-        <div class="thumb-icon-wrap">
-          <svg viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
-          <span class="thumb-icon-label">Power BI</span>
-        </div>
+      <div class="task-thumb img-thumb" style="background-image: url('https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/IMAGES/FIN04.png');">
+        <span class="task-tag-badge">Finals Task 4</span>
       </div>
       <div class="task-body">
-        <div class="task-title">Sales Analysis Dashboard (Power BI)</div>
+        <div class="task-title">Designing Interactive Reports</div>
         <p class="task-desc">Complete sales analysis dashboard built in Power BI with interactive reports, key metrics, and trend visualizations.</p>
         <div class="task-tags"><span class="task-tag">Power BI</span><span class="task-tag">Dashboard</span><span class="task-tag">Sales Analysis</span></div>
       </div>
@@ -233,11 +225,11 @@
       </div>
     </div>
 
-    <!-- Card 2: Essay -->
+    <!-- Card 2: Essay — FINESSAY.png background -->
     <div class="task-card" data-cat="essay"
-      data-badge="Finals Task 2"
+      data-badge="Finals Essay 1"
       data-title="Data Analytics Essay"
-      data-imgurl=""
+      data-imgurl="https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/IMAGES/FINESSAY.png"
       data-thumbclass="thumb-blush"
       data-icon='<path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>'
       data-iconlabel="Essay / PDF"
@@ -245,12 +237,8 @@
       data-tags="Essay,PDF,Academic Writing,Reflection"
       data-download="https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/FINALS/Capitly_Mariella_ESSAY%20(1).pdf"
       data-filename="Capitly_Mariella_ESSAY.pdf">
-      <div class="task-thumb thumb-blush">
-        <span class="task-tag-badge">Finals Task 2</span>
-        <div class="thumb-icon-wrap">
-          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-          <span class="thumb-icon-label">Essay / PDF</span>
-        </div>
+      <div class="task-thumb img-thumb" style="background-image: url('https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/IMAGES/FINESSAY.png');">
+        <span class="task-tag-badge">Finals Essay 1</span>
       </div>
       <div class="task-body">
         <div class="task-title">Data Analytics Essay</div>
@@ -258,16 +246,16 @@
         <div class="task-tags"><span class="task-tag">Essay</span><span class="task-tag">PDF</span><span class="task-tag">Academic Writing</span></div>
       </div>
       <div class="task-footer">
-        <div style="display:flex;align-items:center;gap:0.4rem;"><div class="task-dot"></div><span style="font-size:0.72rem;color:var(--muted);">Finals Task 2</span></div>
+        <div style="display:flex;align-items:center;gap:0.4rem;"><div class="task-dot"></div><span style="font-size:0.72rem;color:var(--muted);">Finals Essay 1</span></div>
         <button class="open-modal-btn">View Details &rarr;</button>
       </div>
     </div>
 
-    <!-- Card 3: Sales Analysis (alternate .pbix) -->
+    <!-- Card 3: Sales Analysis Report (alternate .pbix) — FINSALES.png background -->
     <div class="task-card" data-cat="powerbi"
       data-badge="Finals Task 3"
       data-title="Sales Analysis Report (Power BI)"
-      data-imgurl=""
+      data-imgurl="https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/IMAGES/FINSALES.png"
       data-thumbclass="thumb-rose"
       data-icon='<rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>'
       data-iconlabel="Power BI"
@@ -275,15 +263,11 @@
       data-tags="Power BI,Report,Sales Data,Visualization"
       data-download="https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/FINALS/Sales_Analysis_complete%20(1).pbix"
       data-filename="Finals-Sales-Analysis-Report.pbix">
-      <div class="task-thumb thumb-rose">
+      <div class="task-thumb img-thumb" style="background-image: url('https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/IMAGES/FINSALES.png');">
         <span class="task-tag-badge">Finals Task 3</span>
-        <div class="thumb-icon-wrap">
-          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-          <span class="thumb-icon-label">Power BI</span>
-        </div>
       </div>
       <div class="task-body">
-        <div class="task-title">Sales Analysis Report (Power BI)</div>
+        <div class="task-title">Time Intelligence Function in Power BI</div>
         <p class="task-desc">Power BI report with data model and visual analytics summarizing sales performance across categories and time periods.</p>
         <div class="task-tags"><span class="task-tag">Power BI</span><span class="task-tag">Report</span><span class="task-tag">Sales Data</span></div>
       </div>
@@ -293,71 +277,11 @@
       </div>
     </div>
 
-    <!-- Card 4: Airports CSV -->
-    <div class="task-card" data-cat="csv"
-      data-badge="Finals Task 4"
-      data-title="Airports Dataset (CSV)"
-      data-imgurl=""
-      data-thumbclass="thumb-deep"
-      data-icon='<ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>'
-      data-iconlabel="CSV Dataset"
-      data-desc="A structured CSV dataset containing airport data. Used as a source dataset for data analysis, cleaning, and querying exercises in the finals project."
-      data-tags="CSV,Dataset,Airports,Data Source"
-      data-download="https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/FINALS/airports.csv"
-      data-filename="airports.csv">
-      <div class="task-thumb thumb-deep">
-        <span class="task-tag-badge">Finals Task 4</span>
-        <div class="thumb-icon-wrap">
-          <svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
-          <span class="thumb-icon-label">CSV Dataset</span>
-        </div>
-      </div>
-      <div class="task-body">
-        <div class="task-title">Airports Dataset (CSV)</div>
-        <p class="task-desc">Structured airport data in CSV format, used as a raw source for data analysis, cleaning, and SQL query exercises.</p>
-        <div class="task-tags"><span class="task-tag">CSV</span><span class="task-tag">Dataset</span><span class="task-tag">Airports</span></div>
-      </div>
-      <div class="task-footer">
-        <div style="display:flex;align-items:center;gap:0.4rem;"><div class="task-dot"></div><span style="font-size:0.72rem;color:var(--muted);">Finals Task 4</span></div>
-        <button class="open-modal-btn">View Details &rarr;</button>
-      </div>
-    </div>
-
-    <!-- Card 5: Dirty Shipments CSV -->
-    <div class="task-card" data-cat="csv"
-      data-badge="Finals Task 5"
-      data-title="Dirty Shipments Dataset (CSV)"
-      data-imgurl=""
-      data-thumbclass="thumb-wine"
-      data-icon='<path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>'
-      data-iconlabel="Dirty Data / CSV"
-      data-desc="A raw, unclean shipments dataset in CSV format. Used to practice data cleaning techniques — identifying and fixing missing values, duplicates, and formatting inconsistencies."
-      data-tags="CSV,Data Cleaning,Shipments,Raw Data"
-      data-download="https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/FINALS/dirty_shipments.csv"
-      data-filename="dirty_shipments.csv">
-      <div class="task-thumb thumb-wine">
-        <span class="task-tag-badge">Finals Task 5</span>
-        <div class="thumb-icon-wrap">
-          <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
-          <span class="thumb-icon-label">Dirty Data / CSV</span>
-        </div>
-      </div>
-      <div class="task-body">
-        <div class="task-title">Dirty Shipments Dataset (CSV)</div>
-        <p class="task-desc">Raw unclean shipments data used to practice identifying and correcting missing values, duplicates, and formatting errors.</p>
-        <div class="task-tags"><span class="task-tag">CSV</span><span class="task-tag">Data Cleaning</span><span class="task-tag">Shipments</span></div>
-      </div>
-      <div class="task-footer">
-        <div style="display:flex;align-items:center;gap:0.4rem;"><div class="task-dot"></div><span style="font-size:0.72rem;color:var(--muted);">Finals Task 5</span></div>
-        <button class="open-modal-btn">View Details &rarr;</button>
-      </div>
-    </div>
-
-    <!-- Card 6: SQL Project -->
+    <!-- Card 4: SQL Project — FINPROJ.png background -->
     <div class="task-card" data-cat="sql"
-      data-badge="Finals Task 6"
-      data-title="SQL Project — Data Queries"
-      data-imgurl=""
+      data-badge="Finals Task 1"
+      data-title="Data Preparation and Analysis using SQL"
+      data-imgurl="https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/IMAGES/FINPROJ.png"
       data-thumbclass="thumb-sand"
       data-icon='<path d="M4 6h16M4 12h16M4 18h7"/><circle cx="17" cy="18" r="3"/><path d="m21 21-1.5-1.5"/>'
       data-iconlabel="SQL"
@@ -365,50 +289,16 @@
       data-tags="SQL,Queries,Database,Data Analysis"
       data-download="https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/FINALS/project_capitly%20(1).sql"
       data-filename="project_capitly.sql">
-      <div class="task-thumb thumb-sand">
-        <span class="task-tag-badge">Finals Task 6</span>
-        <div class="thumb-icon-wrap">
-          <svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h7"/><circle cx="17" cy="18" r="3"/><path d="m21 21-1.5-1.5"/></svg>
-          <span class="thumb-icon-label">SQL</span>
-        </div>
+      <div class="task-thumb img-thumb" style="background-image: url('https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/IMAGES/FINPROJ.png');">
+        <span class="task-tag-badge">Finals Task 1</span>
       </div>
       <div class="task-body">
-        <div class="task-title">SQL Project — Data Queries</div>
+        <div class="task-title">Data Preparation and Analysis using SQL</div>
         <p class="task-desc">SQL queries written to extract, filter, aggregate, and analyze data — demonstrating structured querying skills on real-world datasets.</p>
         <div class="task-tags"><span class="task-tag">SQL</span><span class="task-tag">Queries</span><span class="task-tag">Database</span></div>
       </div>
       <div class="task-footer">
         <div style="display:flex;align-items:center;gap:0.4rem;"><div class="task-dot"></div><span style="font-size:0.72rem;color:var(--muted);">Finals Task 6</span></div>
-        <button class="open-modal-btn">View Details &rarr;</button>
-      </div>
-    </div>
-
-    <!-- Card 7: Cleaned Shipments SQL -->
-    <div class="task-card" data-cat="sql"
-      data-badge="Finals Task 7"
-      data-title="Cleaned Shipments SQL Script"
-      data-imgurl=""
-      data-thumbclass="thumb-mauve"
-      data-icon='<polyline points="20 6 9 17 4 12"/>'
-      data-iconlabel="SQL / Cleaned"
-      data-desc="A SQL script containing the cleaned and transformed version of the dirty shipments dataset. Reflects the full data cleaning pipeline applied through SQL statements."
-      data-tags="SQL,Data Cleaning,Shipments,ETL"
-      data-download="https://raw.githubusercontent.com/mariellacapitly/PORTFOLIO/development/projects/FINALS/shipment_cleaned.sql"
-      data-filename="shipment_cleaned.sql">
-      <div class="task-thumb thumb-mauve">
-        <span class="task-tag-badge">Finals Task 7</span>
-        <div class="thumb-icon-wrap">
-          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-          <span class="thumb-icon-label">SQL / Cleaned</span>
-        </div>
-      </div>
-      <div class="task-body">
-        <div class="task-title">Cleaned Shipments SQL Script</div>
-        <p class="task-desc">SQL script reflecting the complete data cleaning pipeline applied to the dirty shipments dataset — transforming raw data into a usable, structured format.</p>
-        <div class="task-tags"><span class="task-tag">SQL</span><span class="task-tag">Data Cleaning</span><span class="task-tag">ETL</span></div>
-      </div>
-      <div class="task-footer">
-        <div style="display:flex;align-items:center;gap:0.4rem;"><div class="task-dot"></div><span style="font-size:0.72rem;color:var(--muted);">Finals Task 7</span></div>
         <button class="open-modal-btn">View Details &rarr;</button>
       </div>
     </div>
@@ -421,7 +311,6 @@
 </footer>
 
 <script>
-  /* ── Filter ── */
   document.querySelectorAll('.filter-btn').forEach(function(btn) {
     btn.addEventListener('click', function() {
       document.querySelectorAll('.filter-btn').forEach(function(b){ b.classList.remove('active'); });
@@ -437,7 +326,6 @@
     });
   });
 
-  /* ── Modal ── */
   var overlay         = document.getElementById('modalOverlay');
   var mBadge          = document.getElementById('modalBadge');
   var mTitle          = document.getElementById('modalTitle');
@@ -456,7 +344,6 @@
       var iconSvg = card.getAttribute('data-icon') || '';
       var iconLbl = card.getAttribute('data-iconlabel') || '';
 
-      // Header: image if available, else gradient + icon
       mHeaderImg.style.backgroundImage = imgUrl ? "url('" + imgUrl + "')" : '';
       mHeaderImg.className = 'modal-header-img ' + (imgUrl ? '' : tClass);
 
@@ -488,7 +375,6 @@
     });
   });
 
-  /* ── Force download via fetch + blob ── */
   document.getElementById('modalDownload').addEventListener('click', function() {
     if (!currentFileUrl) return;
     var btn = this;
